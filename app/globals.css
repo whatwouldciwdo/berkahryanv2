@@ -1,0 +1,337 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,600;1,700&display=swap');
+
+:root {
+  /* Urban Slate Palette Surfaces */
+  --bg-main: #E9E6E7;
+  --bg-surface: #FFFFFF;
+  --bg-surface-2: #DDD9D9;
+  --bg-surface-3: #7B7F8A;
+  --bg-invert: #242120;
+
+  /* Borders */
+  --border: rgba(94, 86, 83, 0.12);
+  --border-strong: rgba(94, 86, 83, 0.22);
+  --border-subtle: rgba(94, 86, 83, 0.1);
+  --border-glass: rgba(94, 86, 83, 0.15);
+
+  /* Primary Accent: #AB978C (Warm Taupe Sand) */
+  --accent: #AB978C;
+  --accent-hover: #988479;
+  --accent-dim: rgba(171, 151, 140, 0.16);
+  --accent-border: rgba(171, 151, 140, 0.4);
+
+  /* Secondary Accents from Urban Slate Palette */
+  --dark-slate: #5E5653;
+  --dark-slate-hover: #4C4542;
+  --steel-blue: #6B7C98;
+  --steel-blue-dim: rgba(107, 124, 152, 0.16);
+  --steel-blue-hover: #586985;
+  --medium-slate: #7B7F8A;
+  --medium-slate-dim: rgba(123, 127, 138, 0.15);
+
+  /* Legacy variable mappings for subpages */
+  --amber-primary: #5E5653;
+  --amber-light: #AB978C;
+  --amber-dim: rgba(171, 151, 140, 0.16);
+  --amber-border: rgba(171, 151, 140, 0.4);
+  --orange-accent: #6B7C98;
+  --bg-card: #FFFFFF;
+  --bg-card-hover: #F8F6F6;
+  --text-primary: #242120;
+  --text-secondary: #5E5653;
+  --text-muted: #7B7F8A;
+
+  /* Text hierarchy */
+  --text-1: #242120;
+  --text-2: #5E5653;
+  --text-3: #7B7F8A;
+
+  /* Status */
+  --status-ok: #2a9d6e;
+  --emerald-status: #2a9d6e;
+
+  /* Type — Poppins Typography System */
+  --font-sans: 'Poppins', var(--font-poppins), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-heading: 'Poppins', var(--font-poppins), sans-serif;
+  --font-display: 'Poppins', var(--font-poppins), sans-serif;
+  --font-poppins: 'Poppins', sans-serif;
+  --font-mono: 'IBM Plex Mono', var(--font-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* Spacing scale */
+  --r-sm: 8px;
+  --r-md: 14px;
+  --r-lg: 20px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  font-family: 'Poppins', var(--font-poppins), sans-serif;
+  background: var(--bg-main);
+  color: var(--text-1);
+}
+
+body {
+  background: var(--bg-main);
+  color: var(--text-1);
+  font-family: 'Poppins', var(--font-poppins), sans-serif;
+  overflow-x: hidden;
+  min-height: 100dvh;
+}
+
+/* Noise overlay — soft grain texture */
+.noise {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  pointer-events: none;
+  opacity: 0.02;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+}
+
+/* Typography — Poppins Clean Hierarchy */
+h1 {
+  font-family: var(--font-sans);
+  letter-spacing: -0.03em;
+  color: var(--text-1);
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+h2 {
+  font-family: var(--font-sans);
+  letter-spacing: -0.025em;
+  color: var(--text-1);
+  font-weight: 700;
+  line-height: 1.18;
+}
+
+h3, h4, h5, h6 {
+  font-family: var(--font-sans);
+  letter-spacing: -0.02em;
+  color: var(--text-1);
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+p {
+  font-family: var(--font-sans);
+  letter-spacing: -0.01em;
+  line-height: 1.65;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Horizontal rule */
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+}
+
+/* Card Surface */
+.premium-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 20px rgba(94, 86, 83, 0.05);
+}
+
+.premium-card:hover {
+  border-color: var(--border-strong);
+  box-shadow: 0 8px 30px rgba(94, 86, 83, 0.1);
+}
+
+/* Label — monospace eyebrow */
+.label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  font-weight: 600;
+}
+
+.label-accent {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--dark-slate);
+  font-weight: 700;
+}
+
+/* Mono spec value */
+.spec {
+  font-family: var(--font-mono);
+  color: var(--steel-blue);
+  font-weight: 700;
+}
+
+.font-mono-spec {
+  font-family: var(--font-mono);
+}
+
+/* Certified badge */
+.cert-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.25rem 0.7rem;
+  border: 1px solid rgba(42, 157, 110, 0.3);
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #2a9d6e;
+  background: rgba(42, 157, 110, 0.08);
+}
+
+.badge-k3 {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  background: rgba(42, 157, 110, 0.1);
+  border: 1px solid rgba(42, 157, 110, 0.3);
+  color: #1e7e55;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Badges from Urban Slate palette */
+.badge-amber,
+.badge-taupe {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  background: var(--accent-dim);
+  border: 1px solid var(--accent-border);
+  color: #5E5653;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.badge-steel {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  background: var(--steel-blue-dim);
+  border: 1px solid rgba(107, 124, 152, 0.45);
+  color: #4A5B75;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* Buttons */
+.btn,
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.6rem;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: var(--r-md);
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+  background: var(--dark-slate);
+  color: #FFFFFF;
+  box-shadow: 0 4px 14px rgba(94, 86, 83, 0.25);
+  transition: all 0.2s ease;
+}
+
+.btn-fill {
+  background: var(--dark-slate);
+  color: #FFFFFF;
+  box-shadow: 0 4px 14px rgba(94, 86, 83, 0.25);
+}
+
+.btn:hover,
+.btn-fill:hover,
+.btn-primary:hover {
+  background: var(--dark-slate-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 22px -4px rgba(94, 86, 83, 0.35);
+  color: #FFFFFF;
+}
+
+.btn-ghost,
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.6rem;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: var(--r-md);
+  cursor: pointer;
+  border: 1px solid var(--border-strong);
+  text-decoration: none;
+  background: transparent;
+  color: var(--text-1);
+  transition: all 0.2s ease;
+}
+
+.btn-ghost:hover,
+.btn-secondary:hover {
+  border-color: var(--dark-slate);
+  color: var(--dark-slate);
+  background: var(--accent-dim);
+}
+
+/* Divider line with label */
+.section-divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.section-divider::before {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* Container */
+.container {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-main); }
+::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 3px; }

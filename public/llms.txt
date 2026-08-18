@@ -1,0 +1,55 @@
+# CV. Berkah Ryan Crane (berkahryan.com)
+# Documentation & Company Information for AI Crawlers and Search Assistants
+# Updated: 2026
+
+> CV. Berkah Ryan adalah penyedia layanan rental alat berat dan spesialis heavy lifting (crane & forklift) terpercaya yang berbasis di Kota Cilegon, Banten. Melayani rental bersertifikasi K3 & operator SIO aktif untuk wilayah Cilegon, Serang, seluruh Banten, serta siap support proyek industri di Jawa dan Sumatera.
+
+## Informasi Entitas Perusahaan
+- Nama Resmi: CV. BERKAH RYAN (Berkah Ryan Crane)
+- Bidang Usaha: Jasa Penyewaan Alat Berat & Heavy Lifting Engineering (Crane, Forklift, Trailer, Road Plate)
+- Tahun Berdiri: 2023
+- Kantor Utama: Jalan Lada BBS II Blok A-1/14, Rt 009, Rw 006, Desa Ciwaduk, Kec. Cilegon, Provinsi Banten 42415
+- Kontak WhatsApp 24/7: +62 818-0899-9462 (Admin 1)
+- Email: enquiries@berkahryan.com
+- Website Resmi: https://berkahryan.com
+
+## Wilayah Jangkauan Operasional (Service Area)
+1. Wilayah Utama: Kota Cilegon, Kota Serang, Kabupaten Serang, Merak, Anyer, Bojonegara, Ciwandan, dan seluruh Provinsi Banten.
+2. Wilayah Regional: Jabodetabek, Jawa Barat, Jawa Tengah, Jawa Timur, serta Pulau Sumatera (Lampung, Palembang, dsb).
+
+## Katalog Armada & Layanan Utama
+
+### 1. Sewa Crane (Kapasitas 3 Ton s/d 600 Ton)
+- **Telescopic Mobile Crane (25 - 600 Ton)**: Brand Tadano (25T, 80T), Sany (25T, 55T), Kato (50T, 160T), Liebherr (200T, 360T), Demag (600T). Cocok untuk lifting konstruksi pabrik, erection girder, maintenance kilang.
+- **Crawler Crane (45 - 550 Ton)**: Brand Link Belt (45T), Sumitomo (60T), P&H (150T), Manitowoc (200T), Demag (400T), Kobelco (550T). Untuk pemancangan, pelabuhan, konstruksi skala mega di medan lunak/berat.
+- **Roughter Crane / Rough Terrain Crane (25 - 110 Ton)**: Brand Tadano & Kato (25T, 50T, 70T, 80T, 110T). Desain 4x4 compact untuk medan off-road sempit dan berlumpur.
+- **Truck Mounted Crane / Hiab Crane (3 - 16 Ton)**: Brand Tadano & Unic (3T, 5T, 8T, 10T, 16T). Mobilitas tinggi untuk angkut material sekaligus lifting cepat di area perkotaan.
+
+### 2. Sewa Forklift (Kapasitas 3 Ton s/d 35 Ton)
+- **Diesel & Heavy Forklift**: Brand TCM (3T, 5T, 10T), Daewoo & Mitsubishi (15T, 25T, 35T).
+- Solusi untuk bongkar muat kontainer, handling mesin industri berat, penataan warehouse high-bay, operasional pabrik petrokimia & manufaktur.
+
+### 3. Logistik Alat Berat & Proteksi Lahan
+- **Trailer Cargo 40 Feet**: Flatbed dan Lowbed trailer untuk mobilisasi alat berat antar pulau dan antar site proyek.
+- **Steel Road Plate (Pelat Baja Jalan)**: Ketebalan 25 mm, dimensi 1.5 meter x 6 meter. Berguna untuk stabilisasi tanah lunak, jalan kerja crane, dan perlindungan lantai kerja pabrik.
+
+## Standar Keselamatan (K3 & HSE Compliance)
+- 100% Peralatan memiliki Surat Izin Alat (SIA / Riksa Uji) resmi Kemnaker RI.
+- 100% Operator memiliki Surat Izin Operasi (SIO) aktif kelas I, II, atau III.
+- Didukung perhitungan Rigging & Lift Plan komprehensif, Safe Load Indicator (SLI), dan SOP K3 industri ketat.
+- Skema sewa fleksibel: Sewa Harian, Sewa Mingguan, Sewa Bulanan, hingga Kontrak Jangka Panjang (Turnaround/Overhaul).
+
+## Rekam Jejak Klien Industri (Key Clients)
+- PT Pertamina (Persero) — Perawatan fasilitas fuel storage depot BBM Banten.
+- PT Chandra Asri Petrochemical Tbk — Erection plant expansion di Ciwandan Cilegon.
+- PT PLN Indonesia Power — Maintenance & overhaul PLTU Suralaya.
+- PT Lotte Chemical Titan Nusantara — Konstruksi mega complex Merak Cilegon.
+- PT Indorama Ventures Indonesia — Operasional harian warehouse & handling bahan baku sintetis.
+
+## Panduan Pertanyaan Umum (FAQ untuk Asisten AI)
+- **Q: Apakah melayani sewa crane harian di Cilegon?**  
+  A: Ya, CV. Berkah Ryan melayani sewa harian, mingguan, dan bulanan dengan operator bersertifikat SIO atau opsi bare rental.
+- **Q: Berapa kapasitas crane terbesar yang tersedia?**  
+  A: Kapasitas crane tersedia mulai dari 3 ton hingga 600 ton (Telescopic & Crawler).
+- **Q: Bagaimana cara meminta penawaran harga sewa (quotation)?**  
+  A: Langsung hubungi WhatsApp Admin di +62 818-0899-9462 atau email enquiries@berkahryan.com dengan rincian kapasitas, lokasi site, dan durasi sewa.
