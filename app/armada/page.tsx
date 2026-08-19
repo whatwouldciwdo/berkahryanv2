@@ -1,243 +1,182 @@
-import React from "react";
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
-import { craneFleetData } from "../data/siteData";
 import JsonLd from "../components/JsonLd";
+import { craneFleetData } from "../data/siteData";
+import styles from "./page.module.css";
 
 export const metadata: Metadata = {
   title: "Katalog Spesifikasi Armada Crane & Forklift | CV. Berkah Ryan",
   description:
-    "Spesifikasi teknis lengkap armada Telescopic Crane 25-600T, Crawler Crane 45-550T, Roughter Crane, Truck Crane, Forklift 3-35T, dan Steel Road Plate di Cilegon Banten.",
-  alternates: {
-    canonical: "https://berkahryan.com/armada",
-  },
+    "Spesifikasi armada mobile crane, crawler crane, rough terrain crane, truck crane, forklift, trailer, dan steel road plate untuk proyek di Cilegon dan Banten.",
+  alternates: { canonical: "https://berkahryan.com/armada" },
 };
 
+const selectionNotes = [
+  { label: "Akses jalan baik", value: "Mobile crane", note: "Mobilisasi cepat, setup outrigger ringkas." },
+  { label: "Medan sempit / tidak rata", value: "Rough terrain", note: "Sasis compact dengan penggerak 4 roda." },
+  { label: "Heavy lift jangka panjang", value: "Crawler crane", note: "Stabil untuk pekerjaan radius dan tonase besar." },
+  { label: "Angkut sekaligus bongkar", value: "Truck crane", note: "Material dibawa dan diturunkan oleh satu unit." },
+];
+
+const brandLogos: Record<string, string> = {
+  Kato: "/images/Kato-logo.png",
+  Kobelco: "/images/kobelco-cranes-seeklogo.png",
+  Liebherr: "/images/Liebherr-Logo.png",
+  Tadano: "/images/tadano-1-logo-svg-vector.svg",
+  Sany: "/images/Sany-Logo.wine.svg",
+  Sumitomo: "/images/sumitomo-logo.png",
+  TCM: "/images/newtcm.png",
+  Unic: "/images/unic-logo-web.png",
+};
+
+function getBrandMark(brand: string) {
+  return brand
+    .split(/\s+|\/|&/)
+    .filter(Boolean)
+    .map((word) => word[0])
+    .join("")
+    .slice(0, 3)
+    .toUpperCase();
+}
+
 export default function ArmadaPage() {
+  const modelCount = craneFleetData.reduce((total, item) => total + item.models.length, 0);
   const armadaJsonLd = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    name: "Katalog Armada Crane & Heavy Equipment CV. Berkah Ryan",
-    description: "Daftar unit armada derek dan alat berat yang siap dioperasikan.",
+    name: "Katalog Armada CV. Berkah Ryan",
     numberOfItems: craneFleetData.length,
+    itemListElement: craneFleetData.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      url: `https://berkahryan.com/layanan/${item.slug}`,
+    })),
   };
 
   return (
-    <div style={{ paddingTop: "7.5rem", paddingBottom: "6rem" }}>
+    <main className={styles.page}>
       <JsonLd data={armadaJsonLd} />
-
-      <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 1.5rem" }}>
-        {/* Breadcrumb & Header */}
-        <div style={{ marginBottom: "4rem" }}>
-          <div
-            style={{
-              display: "flex",
-              gap: "0.5rem",
-              fontSize: "0.85rem",
-              color: "var(--text-muted)",
-              marginBottom: "1rem",
-            }}
-          >
-            <Link href="/" style={{ color: "var(--text-muted)", textDecoration: "none" }}>
-              Beranda
-            </Link>
-            <span>/</span>
-            <span style={{ color: "var(--amber-primary)" }}>Armada & Spesifikasi</span>
-          </div>
-
-          <span className="badge-amber" style={{ marginBottom: "0.75rem" }}>
-            Data Teknis Armada
-          </span>
-
-          <h1
-            style={{
-              fontSize: "clamp(2.25rem, 5vw, 3.5rem)",
-              fontWeight: 850,
-              lineHeight: 1.1,
-              marginBottom: "1.25rem",
-            }}
-          >
-            Spesifikasi Lengkap Armada Derek & Alat Berat
-          </h1>
-
-          <p
-            style={{
-              fontSize: "1.15rem",
-              color: "var(--text-secondary)",
-              maxWidth: "800px",
-              lineHeight: 1.6,
-            }}
-          >
-            Tabel komprehensif seluruh merek terkemuka (Tadano, Kato, Sany, Liebherr,
-            Demag, Kobelco, TCM, Mitsubishi) dengan konfigurasi kapasitas angkat dan
-            peruntukan operasional.
-          </p>
-        </div>
-
-        {/* Fleet List Detail Cards */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "3rem", marginBottom: "5rem" }}>
-          {craneFleetData.map((item, idx) => (
-            <div
-              key={item.id}
-              className="premium-card"
-              style={{
-                padding: "2.5rem",
-                border: "1px solid var(--border-subtle)",
-              }}
-            >
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "flex-start",
-                  flexWrap: "wrap",
-                  gap: "1rem",
-                  marginBottom: "1.5rem",
-                }}
-              >
-                <div>
-                  <div style={{ display: "flex", gap: "0.5rem", alignItems: "center", marginBottom: "0.5rem" }}>
-                    <span
-                      style={{
-                        fontFamily: "var(--font-mono)",
-                        color: "var(--accent)",
-                        fontWeight: 700,
-                        fontSize: "0.9rem",
-                      }}
-                    >
-                      #0{idx + 1}
-                    </span>
-                    <span className="badge-k3">Ready for Ops</span>
-                  </div>
-                  <h2 style={{ fontSize: "1.75rem", color: "var(--text-1)" }}>{item.name}</h2>
-                </div>
-
-                <div
-                  style={{
-                    padding: "0.5rem 1.25rem",
-                    background: "var(--steel-blue-dim)",
-                    border: "1px solid rgba(107, 124, 152, 0.3)",
-                    borderRadius: "12px",
-                    textAlign: "right",
-                  }}
-                >
-                  <div style={{ fontSize: "0.75rem", color: "var(--text-muted)", textTransform: "uppercase" }}>
-                    Kapasitas Angkat
-                  </div>
-                  <div
-                    style={{
-                      fontFamily: "var(--font-mono)",
-                      fontSize: "1.35rem",
-                      fontWeight: 800,
-                      color: "var(--steel-blue)",
-                    }}
-                  >
-                    {item.capacityRange}
-                  </div>
-                </div>
-              </div>
-
-              <p style={{ color: "var(--text-secondary)", lineHeight: 1.6, marginBottom: "2rem" }}>
-                {item.description}
+      <header className={styles.hero}>
+        <div className={styles.container}>
+          <nav className={styles.breadcrumb} aria-label="Breadcrumb">
+            <Link href="/">Beranda</Link><span>/</span><span>Armada</span>
+          </nav>
+          <div className={styles.heroGrid}>
+            <div className={styles.heroCopy}>
+              <p className={styles.eyebrow}>Katalog kerja / 2026</p>
+              <h1>Pilih alat dari kebutuhan lapangan, bukan sekadar tonase.</h1>
+              <p className={styles.intro}>
+                Daftar kategori, rentang kapasitas, dan konfigurasi unit yang kami tangani.
+                Ketersediaan unit dikonfirmasi berdasarkan tanggal, lokasi, radius kerja,
+                kondisi akses, dan hasil site survey.
               </p>
+            </div>
+            <div className={styles.heroMedia}>
+              <Image src="/crane_rigging_site.jpg" alt="Operasi crane dan rigging di area proyek industri" fill priority sizes="(max-width: 800px) 100vw, 42vw" />
+              <span>Operasi lifting · Cilegon</span>
+            </div>
+          </div>
+          <dl className={styles.summary}>
+            <div><dt>Kategori alat</dt><dd>{String(craneFleetData.length).padStart(2, "0")}</dd></div>
+            <div><dt>Konfigurasi merek</dt><dd>{String(modelCount).padStart(2, "0")}</dd></div>
+            <div><dt>Rentang crane</dt><dd>3—600 T</dd></div>
+            <div><dt>Wilayah utama</dt><dd>Cilegon / Banten</dd></div>
+          </dl>
+        </div>
+      </header>
 
-              {/* Models Matrix */}
-              <div
-                style={{
-                  background: "var(--bg-main)",
-                  borderRadius: "16px",
-                  padding: "1.5rem",
-                  border: "1px solid var(--border)",
-                  marginBottom: "2rem",
-                }}
-              >
-                <h3
-                  style={{
-                    fontSize: "0.85rem",
-                    textTransform: "uppercase",
-                    letterSpacing: "0.05em",
-                    color: "var(--text-muted)",
-                    marginBottom: "1rem",
-                  }}
-                >
-                  Rincian Unit & Merek Tersedia:
-                </h3>
+      <section className={styles.guide} aria-labelledby="selection-title">
+        <div className={styles.container}>
+          <div className={styles.sectionHeading}>
+            <p className={styles.sectionNumber}>01</p>
+            <div><p className={styles.eyebrow}>Panduan awal</p><h2 id="selection-title">Mulai dari kondisi site</h2></div>
+            <p>Tonase pada unit bukan kapasitas angkat di semua radius. Load chart, panjang boom, ground condition, dan ruang outrigger tetap harus dihitung.</p>
+          </div>
+          <div className={styles.guideGrid}>
+            {selectionNotes.map((item) => (
+              <article key={item.label}>
+                <p>{item.label}</p><h3>{item.value}</h3><span>{item.note}</span>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
 
-                <div
-                  style={{
-                    display: "grid",
-                    gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-                    gap: "1rem",
-                  }}
-                >
-                  {item.models.map((model, mIdx) => (
-                    <div
-                      key={mIdx}
-                      style={{
-                        padding: "1rem",
-                        background: "var(--bg-surface)",
-                        border: "1px solid var(--border)",
-                        borderRadius: "10px",
-                      }}
-                    >
-                      <div
-                        style={{
-                          display: "flex",
-                          justifyContent: "space-between",
-                          fontWeight: 700,
-                          color: "var(--text-1)",
-                          marginBottom: "0.35rem",
-                        }}
-                      >
-                        <span>{model.brand}</span>
-                        <span className="font-mono-spec" style={{ color: "var(--dark-slate)" }}>
-                          {model.capacity}
+      <section className={styles.catalog} aria-labelledby="catalog-title">
+        <div className={styles.container}>
+          <div className={styles.sectionHeading}>
+            <p className={styles.sectionNumber}>02</p>
+            <div><p className={styles.eyebrow}>Daftar unit</p><h2 id="catalog-title">Katalog armada</h2></div>
+            <p>Pilih kategori untuk melihat peruntukan dan konfigurasi merek. Detail akhir mengikuti unit yang tersedia pada jadwal proyek.</p>
+          </div>
+          <nav className={styles.index} aria-label="Daftar kategori armada">
+            {craneFleetData.map((item, index) => (
+              <a href={`#${item.slug}`} key={item.id}><span>{String(index + 1).padStart(2, "0")}</span>{item.name}</a>
+            ))}
+          </nav>
+          <div className={styles.fleetList}>
+            {craneFleetData.map((item, index) => (
+              <article className={styles.fleetItem} id={item.slug} key={item.id}>
+                <div className={styles.fleetTitle}>
+                  <p>{String(index + 1).padStart(2, "0")} / {item.category}</p>
+                  <h3>{item.name}</h3>
+                  <div className={styles.capacity}><span>Kapasitas</span><strong>{item.capacityRange}</strong></div>
+                </div>
+                <div className={styles.fleetBody}>
+                  <p className={styles.description}>{item.shortDesc}</p>
+                  <div className={styles.applications}>
+                    <h4>Umum digunakan untuk</h4>
+                    <ul>{item.applications.slice(0, 3).map((application) => <li key={application}>{application}</li>)}</ul>
+                  </div>
+                </div>
+                <div className={styles.modelTable}>
+                  <div className={styles.tableHead}><span>Merek / tipe</span><span>Konfigurasi tersedia</span></div>
+                  {item.models.map((model) => (
+                    <div className={styles.modelRow} key={`${model.brand}-${model.capacity}`}>
+                      <div className={styles.brandCell}>
+                        <span className={styles.brandLogo} aria-hidden="true">
+                          {brandLogos[model.brand] ? (
+                            <Image
+                              src={brandLogos[model.brand]}
+                              alt=""
+                              width={88}
+                              height={32}
+                              sizes="88px"
+                            />
+                          ) : (
+                            <span>{getBrandMark(model.brand)}</span>
+                          )}
                         </span>
+                        <strong>{model.brand}</strong>
                       </div>
-                      {model.specsNote && (
-                        <p style={{ fontSize: "0.75rem", color: "var(--text-muted)", lineHeight: 1.4 }}>
-                          {model.specsNote}
-                        </p>
-                      )}
+                      <div className={styles.modelSpecs}><span>{model.capacity}</span></div>
                     </div>
                   ))}
                 </div>
-              </div>
-
-              {/* Card Actions */}
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                  flexWrap: "wrap",
-                  gap: "1rem",
-                }}
-              >
-                <div style={{ fontSize: "0.85rem", color: "var(--emerald-status)" }}>
-                  ✓ {item.k3Compliance}
+                <div className={styles.fleetFooter}>
+                  <p><span>Dokumen K3</span>{item.k3Compliance}</p>
+                  <Link href={`/layanan/${item.slug}`}>Lihat detail layanan <span aria-hidden="true">↗</span></Link>
                 </div>
-                <div style={{ display: "flex", gap: "0.75rem" }}>
-                  <Link href={`/layanan/${item.slug}`} className="btn-secondary" style={{ fontSize: "0.85rem" }}>
-                    Detail Lengkap & FAQ
-                  </Link>
-                  <a
-                    href={`https://wa.me/6281808999462?text=Halo%20CV.%20Berkah%20Ryan,%20saya%20ingin%20cek%20ketersediaan%20unit%20${encodeURIComponent(
-                      item.name
-                    )}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn btn-fill"
-                    style={{ fontSize: "0.85rem" }}
-                  >
-                    Cek Ketersediaan Unit
-                  </a>
-                </div>
-              </div>
-            </div>
-          ))}
+              </article>
+            ))}
+          </div>
         </div>
-      </div>
-    </div>
+      </section>
+
+      <section className={styles.contact}>
+        <div className={styles.container}>
+          <div className={styles.contactInner}>
+            <p className={styles.sectionNumber}>03</p>
+            <div><p className={styles.eyebrow}>Sebelum mobilisasi</p><h2>Belum yakin unit mana yang aman?</h2></div>
+            <div className={styles.contactCopy}>
+              <p>Kirim berat dan dimensi beban, lokasi titik angkat, perkiraan radius, foto akses, serta tanggal pekerjaan. Tim kami akan menilai kebutuhan survey dan pilihan unit yang masuk akal.</p>
+              <a href="https://wa.me/6281808999462?text=Halo%20CV.%20Berkah%20Ryan,%20saya%20ingin%20konsultasi%20pemilihan%20unit%20untuk%20pekerjaan%20lifting." target="_blank" rel="noopener noreferrer">Diskusikan kebutuhan proyek <span aria-hidden="true">→</span></a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
   );
 }
