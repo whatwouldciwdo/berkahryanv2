@@ -6,11 +6,28 @@ import { craneFleetData } from "../data/siteData";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
-  title: "Katalog Spesifikasi Armada Crane & Forklift | CV. Berkah Ryan",
+  title:
+    "Armada Sewa Crane 3-600 Ton Cilegon, Serang, Anyer & Pandeglang",
   description:
-    "Spesifikasi armada mobile crane, crawler crane, rough terrain crane, truck crane, forklift, trailer, dan steel road plate untuk proyek di Cilegon dan Banten.",
+    "Katalog armada jasa sewa crane: mobile crane, crawler crane, rough terrain crane, truck crane, forklift 3-35 Ton, trailer 40 ft, dan steel road plate. Siap dimobilisasi ke Cilegon, Serang, Anyer, Pandeglang, dan seluruh Banten.",
+  keywords: [
+    "armada sewa crane cilegon",
+    "sewa mobile crane banten",
+    "sewa crawler crane cilegon",
+    "sewa rough terrain crane serang",
+    "sewa forklift cilegon",
+    "spesifikasi crane sewa",
+  ],
   alternates: { canonical: "https://berkahryan.com/armada" },
+  openGraph: {
+    title:
+      "Armada Sewa Crane 3-600 Ton Cilegon, Serang, Anyer & Pandeglang",
+    description:
+      "Spesifikasi lengkap armada crane dan alat berat CV. Berkah Ryan yang siap melayani proyek industri di Banten, Jawa, dan Sumatera.",
+    url: "https://berkahryan.com/armada",
+  },
 };
+
 
 const selectionNotes = [
   { label: "Akses jalan baik", value: "Mobile crane", note: "Mobilisasi cepat, setup outrigger ringkas." },
@@ -28,6 +45,33 @@ const brandLogos: Record<string, string> = {
   Sumitomo: "/images/sumitomo-logo.png",
   TCM: "/images/newtcm.png",
   Unic: "/images/unic-logo-web.png",
+};
+
+const fleetImages: Record<string, { src: string; caption: string }> = {
+  "telescopic-mobile-crane": {
+    src: "/images/services/telescopic-mobile/sewa-telescopic-mobile-crane-sany-cilegon.webp",
+    caption: "Telescopic boom / hydraulic outrigger",
+  },
+  "truck-mounted-crane": {
+    src: "/images/services/truck-crane/sewa-truck-mounted-crane-unic-cilegon.png",
+    caption: "Cargo deck / telescopic boom",
+  },
+  "crawler-crane": {
+    src: "/images/services/crawler-crane/sewa-crawler-crane-kobelco-cilegon.png",
+    caption: "Lattice boom / crawler track",
+  },
+  "roughter-crane": {
+    src: "/images/services/roughter-crane/sewa-roughter-crane-50-ton-cilegon.png",
+    caption: "Compact chassis / 4WD—4WS",
+  },
+  "forklift-rental": {
+    src: "/images/services/forklift/rental-forklift-heavy-duty-cilegon.png",
+    caption: "Counterbalance / diesel mast",
+  },
+  "trailer-logistics-road-plate": {
+    src: "/berkah-ryan-rental-alat-berat-cilegon.webp",
+    caption: "Lowbed transport / ground protection",
+  },
 };
 
 function getBrandMark(brand: string) {
@@ -125,10 +169,23 @@ export default function ArmadaPage() {
                   <div className={styles.capacity}><span>Kapasitas</span><strong>{item.capacityRange}</strong></div>
                 </div>
                 <div className={styles.fleetBody}>
-                  <p className={styles.description}>{item.shortDesc}</p>
-                  <div className={styles.applications}>
-                    <h4>Umum digunakan untuk</h4>
-                    <ul>{item.applications.slice(0, 3).map((application) => <li key={application}>{application}</li>)}</ul>
+                  <figure className={styles.fleetVisual}>
+                    <div className={styles.imageStage}>
+                      <Image
+                        src={fleetImages[item.slug].src}
+                        alt={`${item.name} untuk kebutuhan proyek industri`}
+                        fill
+                        sizes="(max-width: 560px) calc(100vw - 1.5rem), (max-width: 850px) calc(100vw - 7rem), 520px"
+                      />
+                    </div>
+                    <figcaption><span>Equipment study</span>{fleetImages[item.slug].caption}</figcaption>
+                  </figure>
+                  <div className={styles.fleetInfo}>
+                    <p className={styles.description}>{item.shortDesc}</p>
+                    <div className={styles.applications}>
+                      <h4>Umum digunakan untuk</h4>
+                      <ul>{item.applications.slice(0, 3).map((application) => <li key={application}>{application}</li>)}</ul>
+                    </div>
                   </div>
                 </div>
                 <div className={styles.modelTable}>

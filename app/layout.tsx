@@ -22,23 +22,38 @@ const ibmPlexMono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://berkahryan.com"),
   title: {
-    default: "Sewa Crane Cilegon & Rental Alat Berat Banten | CV. Berkah Ryan",
+    default:
+      "Jasa Sewa Crane Cilegon, Serang, Anyer & Pandeglang | CV. Berkah Ryan",
     template: "%s | CV. Berkah Ryan Crane",
   },
   description:
-    "CV. Berkah Ryan adalah penyedia jasa rental crane 3 s/d 600 Ton, forklift industri 3-35 Ton, trailer 40 ft, dan steel road plate di Cilegon Banten bersertifikasi K3 resmi Kemnaker RI & operator SIO aktif.",
+    "Jasa sewa crane 3 s/d 600 Ton di Cilegon, Serang, Anyer, Pandeglang, dan seluruh Banten. Melayani Jawa & Sumatera. Rental forklift 3-35 Ton, trailer 40 ft, steel road plate. Bersertifikat K3 Kemnaker RI & operator SIO aktif, siap 24/7.",
   keywords: [
+    "jasa sewa crane",
+    "jasa sewa crane cilegon",
+    "jasa sewa crane serang",
+    "jasa sewa crane anyer",
+    "jasa sewa crane pandeglang",
+    "jasa sewa crane banten",
+    "jasa sewa crane jawa",
+    "jasa sewa crane sumatera",
     "sewa crane cilegon",
+    "sewa crane serang",
+    "sewa crane anyer",
+    "sewa crane pandeglang",
     "rental crane banten",
+    "harga sewa crane cilegon",
+    "sewa mobile crane cilegon",
+    "sewa crawler crane banten",
+    "sewa roughter crane cilegon",
+    "sewa truck crane banten",
     "sewa forklift cilegon",
-    "sewa mobile crane",
-    "rental crawler crane banten",
-    "roughter crane cilegon",
     "rental alat berat banten",
-    "CV Berkah Ryan",
     "sewa trailer 40 feet cilegon",
-    "sewa steel plate banten"
+    "sewa steel road plate banten",
+    "CV Berkah Ryan",
   ],
+
   authors: [{ name: "CV. Berkah Ryan" }],
   creator: "CV. Berkah Ryan",
   publisher: "CV. Berkah Ryan",
@@ -52,9 +67,11 @@ export const metadata: Metadata = {
     locale: "id_ID",
     url: "https://berkahryan.com",
     siteName: "CV. Berkah Ryan Crane",
-    title: "Sewa Crane Cilegon & Rental Alat Berat Banten | CV. Berkah Ryan",
+    title:
+      "Jasa Sewa Crane Cilegon, Serang, Anyer & Pandeglang | CV. Berkah Ryan",
     description:
-      "Layanan sewa derek crane 3 s/d 600 Ton & forklift bersertifikasi K3 Kemnaker di Cilegon, Serang, Banten, Jawa, dan Sumatera. Siap 24/7.",
+      "Jasa sewa crane 3 s/d 600 Ton & forklift bersertifikat K3 Kemnaker di Cilegon, Serang, Anyer, Pandeglang, seluruh Banten, Jawa, dan Sumatera. Siap 24/7.",
+
     images: [
       {
         url: "/berkah-ryan-rental-alat-berat-cilegon.webp",
@@ -66,9 +83,11 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Sewa Crane Cilegon & Rental Alat Berat Banten | CV. Berkah Ryan",
+    title:
+      "Jasa Sewa Crane Cilegon, Serang, Anyer & Pandeglang | CV. Berkah Ryan",
     description:
-      "Rental crane & forklift profesional di Banten. Telescopic, Crawler, Roughter crane bersertifikat SIA & SIO aktif.",
+      "Jasa sewa crane & forklift profesional di Cilegon, Serang, Anyer, Pandeglang, Banten. Telescopic, Crawler, Roughter crane bersertifikat SIA & SIO aktif.",
+
     images: ["/berkah-ryan-rental-alat-berat-cilegon.webp"],
   },
   robots: {
@@ -109,7 +128,19 @@ export default function RootLayout({
     logo: "https://berkahryan.com/berkahryan-logo.svg",
     image: "https://berkahryan.com/berkah-ryan-rental-alat-berat-cilegon.webp",
     description:
-      "Penyedia spesialis jasa penyewaan crane kapasitas 3 hingga 600 Ton, forklift industri, trailer, dan steel road plate di Cilegon, Serang, dan Provinsi Banten bersertifikasi K3 Kemnaker RI.",
+      "Spesialis jasa sewa crane kapasitas 3 hingga 600 Ton, forklift industri, trailer, dan steel road plate untuk wilayah Cilegon, Serang, Anyer, Pandeglang, dan seluruh Provinsi Banten, serta proyek di Pulau Jawa dan Sumatera. Bersertifikat K3 Kemnaker RI dengan operator SIO aktif.",
+    slogan: "Jasa Sewa Crane Cilegon, Serang, Anyer & Pandeglang",
+    knowsAbout: [
+      "Jasa sewa crane",
+      "Sewa mobile crane",
+      "Sewa crawler crane",
+      "Sewa rough terrain crane",
+      "Sewa truck mounted crane",
+      "Sewa forklift industri",
+      "Rigging dan lift plan",
+      "Sertifikasi K3 Kemnaker SIA dan SIO",
+    ],
+
     telephone: "+6281808999462",
     email: "enquiries@berkahryan.com",
     address: {
@@ -144,11 +175,20 @@ export default function RootLayout({
     areaServed: [
       { "@type": "City", name: "Cilegon" },
       { "@type": "City", name: "Serang" },
+      { "@type": "City", name: "Anyer" },
+      { "@type": "City", name: "Pandeglang" },
+      { "@type": "City", name: "Merak" },
+      { "@type": "City", name: "Bojonegara" },
+      { "@type": "City", name: "Ciwandan" },
+      { "@type": "City", name: "Tangerang" },
       { "@type": "AdministrativeArea", name: "Banten" },
       { "@type": "AdministrativeArea", name: "Jawa Barat" },
+      { "@type": "AdministrativeArea", name: "Jawa Tengah" },
+      { "@type": "AdministrativeArea", name: "Jawa Timur" },
       { "@type": "AdministrativeArea", name: "DKI Jakarta" },
       { "@type": "AdministrativeArea", name: "Sumatera" },
     ],
+
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: "Layanan Rental Alat Berat & Crane",

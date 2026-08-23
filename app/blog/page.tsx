@@ -33,7 +33,6 @@ export default function BlogListingPage() {
       <JsonLd data={blogListJsonLd} />
 
       <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 1.5rem" }}>
-        {/* Breadcrumb & Header */}
         <div style={{ marginBottom: "4rem" }}>
           <div
             style={{
@@ -79,12 +78,11 @@ export default function BlogListingPage() {
           </p>
         </div>
 
-        {/* Blog Posts Grid */}
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(340px, 1fr))",
-            gap: "2.5rem",
+            gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 300px), 1fr))",
+            gap: "2rem",
             marginBottom: "5rem",
           }}
         >

@@ -14,13 +14,12 @@ interface NavMenuItem {
 
 const fullNavMenu: NavMenuItem[] = [
   { label: "Home", href: "/", desc: "Beranda Utama" },
-  { label: "Armada & Unit", href: "/armada", desc: "Telescopic, Crawler, Roughter" },
-  { label: "Layanan Lifting", href: "/layanan", desc: "Heavy Lift, Rigging & Erection" },
-  { label: "Rental Forklift", href: "/layanan/forklift-rental", desc: "Forklift Diesel 3 - 35 Ton" },
-  { label: "Proyek Terakhir", href: "/proyek", desc: "Studi Kasus Pertamina, PLN, Lotte" },
-  { label: "Tentang Kami & K3", href: "/tentang-kami", desc: "Legalitas & Standar HSE" },
-  { label: "Wawasan & Blog", href: "/blog", desc: "Panduan & Regulasi Alat Berat" },
-  { label: "Kontak & Inquiry", href: "/kontak", desc: "Dispatcher 24 Jam Cilegon" },
+  { label: "Services", href: "/layanan", desc: "Heavy Lift & Rigging Services" },
+  { label: "Fleet", href: "/armada", desc: "Telescopic, Crawler, Roughter & Forklift" },
+  { label: "Projects", href: "/proyek", desc: "Studi Kasus & Portofolio Lapangan" },
+  { label: "About Us", href: "/tentang-kami", desc: "Profil Perusahaan & Standar HSE" },
+  { label: "Blog", href: "/blog", desc: "Wawasan & Regulasi Keselamatan" },
+  { label: "Contact Us", href: "/kontak", desc: "Konsultasi & Permintaan Penawaran" },
 ];
 
 export default function Navbar() {
@@ -175,7 +174,6 @@ export default function Navbar() {
 
   return (
     <>
-      {/* ── TOP FIXED NAVBAR ────────────────────────────────────────── */}
       <header
         style={{
           position: "fixed",
@@ -206,74 +204,62 @@ export default function Navbar() {
             padding: "0 1.75rem",
           }}
         >
-          {/* Wordmark & Brand Logo */}
           <Link
             href="/"
             onClick={closeMenu}
             style={{
               display: "flex",
               alignItems: "center",
-              gap: "0.65rem",
+              gap: "0.75rem",
               textDecoration: "none",
             }}
           >
-            <div
-              style={{
-                width: "34px",
-                height: "34px",
-                borderRadius: "9px",
-                background: "var(--bg-surface-2)",
-                border: "1px solid var(--accent-border)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                flexShrink: 0,
-              }}
-            >
-              <Image
-                src="/berkahryan-logo.svg"
-                alt="Berkah Ryan"
-                width={22}
-                height={22}
-                priority
-                style={{ objectFit: "contain" }}
-              />
-            </div>
+            <Image
+              src="/berkahryan-logo.svg"
+              alt="CV. Berkah Ryan"
+              width={48}
+              height={48}
+              priority
+              className="navbar-logo-img"
+              style={{ objectFit: "contain", flexShrink: 0 }}
+            />
             <div>
               <div
+                className="navbar-brand-title"
                 style={{
                   fontFamily: "var(--font-display)",
                   fontWeight: 800,
-                  fontSize: "1rem",
+                  fontSize: "1.02rem",
                   letterSpacing: "-0.02em",
                   color: "var(--text-1)",
                   lineHeight: 1.1,
                 }}
               >
-                BERKAH RYAN
+                CV. BERKAH RYAN
               </div>
               <div
-                className="label"
+                className="label navbar-brand-sub"
                 style={{
                   fontSize: "0.6rem",
                   letterSpacing: "0.08em",
                   color: "var(--text-3)",
+                  textTransform: "uppercase",
+                  marginTop: "1px",
                 }}
               >
-                Heavy Crane & Rigging
+                HEAVY EQUIPMENT
               </div>
             </div>
           </Link>
 
-          {/* Right cluster: CRANE, FORKLIFT, WHATSAPP, and CURVED MENU BUTTON */}
           <div
+            className="navbar-right-cluster"
             style={{
               display: "flex",
               alignItems: "center",
               gap: "1.25rem",
             }}
           >
-            {/* Nav link: CRANE */}
             <Link
               href="/armada"
               className="navbar-quick-link"
@@ -291,7 +277,6 @@ export default function Navbar() {
               Crane
             </Link>
 
-            {/* Nav link: FORKLIFT */}
             <Link
               href="/layanan/forklift-rental"
               className="navbar-quick-link"
@@ -309,43 +294,37 @@ export default function Navbar() {
               Forklift
             </Link>
 
-            {/* Nav link: WHATSAPP */}
             <a
               href="https://wa.me/6281808999462?text=Halo%20CV.%20Berkah%20Ryan,%20saya%20ingin%20konsultasi%20sewa%20crane%20atau%20forklift."
               target="_blank"
               rel="noopener noreferrer"
-              className="navbar-wa-badge"
+              className="navbar-quick-link navbar-wa-link"
               style={{
                 display: "inline-flex",
                 alignItems: "center",
-                gap: "0.45rem",
-                padding: "0.45rem 1rem",
-                borderRadius: "9999px",
-                background: "rgba(42, 157, 110, 0.14)",
-                border: "1px solid rgba(42, 157, 110, 0.35)",
-                color: "#1b6d4b",
+                gap: "0.4rem",
                 fontFamily: "var(--font-mono)",
-                fontSize: "0.78rem",
+                fontSize: "0.82rem",
                 fontWeight: 700,
-                letterSpacing: "0.06em",
+                letterSpacing: "0.08em",
                 textTransform: "uppercase",
+                color: "#16a34a",
                 textDecoration: "none",
-                transition: "all 0.2s ease",
+                transition: "color 0.2s ease, transform 0.2s ease",
               }}
             >
-              <span
-                style={{
-                  width: "6px",
-                  height: "6px",
-                  borderRadius: "50%",
-                  background: "#22c55e",
-                  display: "inline-block",
-                }}
-              />
-              WhatsApp
+              <svg
+                width="15"
+                height="15"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                style={{ flexShrink: 0 }}
+              >
+                <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm.01 1.67c2.2 0 4.26.86 5.82 2.41a8.2 8.2 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24h-.18zm-3.6 3.32c-.2 0-.46.07-.7.34-.24.26-.93.91-.93 2.22s.95 2.58 1.08 2.76c.13.17 1.84 2.89 4.52 3.96 2.22.89 2.68.71 3.16.67.49-.05 1.57-.64 1.79-1.26.22-.62.22-1.15.15-1.26-.07-.11-.24-.18-.51-.31-.27-.13-1.57-.77-1.81-.86-.24-.09-.42-.13-.6.13-.18.27-.69.86-.85 1.04-.15.18-.31.2-.58.07-.27-.13-1.13-.42-2.16-1.33-.8-.71-1.34-1.59-1.5-1.86-.15-.27-.02-.41.12-.54.12-.12.27-.31.4-.46.13-.16.18-.27.27-.44.09-.18.04-.33-.02-.47-.07-.13-.6-1.45-.82-1.99-.22-.52-.44-.45-.6-.46h-.51z" />
+              </svg>
+              <span>WhatsApp</span>
             </a>
 
-            {/* CURVED MENU TOGGLE BUTTON (TOP-RIGHT CORNER) */}
             <button
               onClick={toggleMenu}
               aria-label={isOpen ? "Tutup menu" : "Buka menu navigasi"}
@@ -376,7 +355,6 @@ export default function Navbar() {
         </div>
       </header>
 
-      {/* ── BACKDROP DIM OVERLAY ────────────────────────────────────────── */}
       <div
         onClick={closeMenu}
         style={{
@@ -392,7 +370,6 @@ export default function Navbar() {
         }}
       />
 
-      {/* ── CURVED SLIDE-IN MENU PANEL (CODROPS/DENIS KOVALENKO PATTERN) ── */}
       <div
         ref={menuRef}
         className="curved-menu-panel"
@@ -413,7 +390,6 @@ export default function Navbar() {
           transform: "translateX(580px)",
         }}
       >
-        {/* SVG Curve on Left Edge */}
         <svg
           className="curved-menu-svg"
           style={{
@@ -431,9 +407,7 @@ export default function Navbar() {
           <path ref={curvePathRef} />
         </svg>
 
-        {/* Menu Navigation Body */}
         <div style={{ flex: 1, display: "flex", flexDirection: "column" }}>
-          {/* Header Label */}
           <div
             style={{
               paddingBottom: "0.85rem",
@@ -454,7 +428,7 @@ export default function Navbar() {
                 color: "#AB978C",
               }}
             >
-              Navigasi Berkah Ryan
+              Menu
             </span>
             <span
               style={{
@@ -467,7 +441,6 @@ export default function Navbar() {
             </span>
           </div>
 
-          {/* Links List */}
           <nav
             ref={linksRef}
             onMouseLeave={() => setIndicator(pathname)}
@@ -493,7 +466,6 @@ export default function Navbar() {
                     alignItems: "center",
                   }}
                 >
-                  {/* Dot Indicator */}
                   <div
                     className="curved-menu-dot"
                     style={{
@@ -531,9 +503,30 @@ export default function Navbar() {
               );
             })}
           </nav>
+
+          <div
+            style={{
+              marginTop: "2.5rem",
+              marginBottom: "0.5rem",
+              display: "flex",
+              justifyContent: "center",
+              width: "100%",
+              opacity: 0.22,
+              pointerEvents: "none",
+              userSelect: "none",
+            }}
+          >
+            <Image
+              src="/berkahryan-logo.svg"
+              alt="CV. Berkah Ryan"
+              width={130}
+              height={130}
+              priority
+              style={{ objectFit: "contain" }}
+            />
+          </div>
         </div>
 
-        {/* Menu Footer */}
         <div
           style={{
             paddingTop: "1.5rem",
@@ -544,50 +537,68 @@ export default function Navbar() {
           <div
             style={{
               display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              flexWrap: "wrap",
-              gap: "1rem",
-              fontSize: "0.75rem",
-              fontFamily: "var(--font-mono)",
+              flexDirection: "column",
+              gap: "0.75rem",
             }}
           >
-            <a
-              href="https://wa.me/6281808999462"
-              target="_blank"
-              rel="noopener noreferrer"
+            <div
               style={{
-                color: "#AB978C",
-                textDecoration: "none",
-                fontWeight: 600,
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                flexWrap: "wrap",
+                gap: "0.75rem",
+                fontSize: "0.78rem",
+                fontFamily: "var(--font-mono)",
               }}
             >
-              WA: 0818 0899 9462
-            </a>
-            <a
-              href="mailto:info@berkahryan.com"
+              <a
+                href="https://wa.me/6281808999462"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  color: "#AB978C",
+                  textDecoration: "none",
+                  fontWeight: 600,
+                }}
+              >
+                WA: 0818 0899 9462
+              </a>
+              <a
+                href="mailto:info@berkahryan.com"
+                style={{
+                  color: "rgba(255, 255, 255, 0.6)",
+                  textDecoration: "none",
+                }}
+              >
+                info@berkahryan.com
+              </a>
+            </div>
+
+            <div
               style={{
-                color: "rgba(255, 255, 255, 0.6)",
-                textDecoration: "none",
+                fontSize: "0.72rem",
+                color: "rgba(255, 255, 255, 0.45)",
+                lineHeight: 1.5,
+                fontFamily: "var(--font-mono)",
               }}
             >
-              info@berkahryan.com
-            </a>
-            <span style={{ color: "rgba(255, 255, 255, 0.4)" }}>
-              24/7 Dispatcher
-            </span>
+              Jl. Lada BBS II Blok A-1/14, Ciwaduk, Cilegon, Banten 42415
+            </div>
           </div>
         </div>
       </div>
 
-      {/* ── CSS STYLES ────────────────────────────────────────────────── */}
       <style jsx global>{`
         .navbar-quick-link:hover {
           color: var(--accent) !important;
           transform: translateY(-1px);
         }
-        .navbar-wa-badge:hover {
-          background: rgba(42, 157, 110, 0.25) !important;
+        .navbar-wa-link {
+          color: #16a34a !important;
+        }
+        .navbar-wa-link:hover {
+          color: #15803d !important;
           transform: translateY(-1px);
         }
         .curved-menu-trigger:hover {
@@ -630,12 +641,40 @@ export default function Navbar() {
         }
 
         @media (max-width: 640px) {
-          .curved-menu-panel {
-            padding: 5.5rem 2rem 2.5rem 2.5rem !important;
+          header .container {
+            padding: 0 1rem !important;
           }
-          .navbar-wa-badge {
-            padding: 0.35rem 0.65rem !important;
-            font-size: 0.7rem !important;
+          .navbar-logo-img {
+            width: 36px !important;
+            height: 36px !important;
+          }
+          .navbar-brand-title {
+            font-size: 0.9rem !important;
+          }
+          .navbar-brand-sub {
+            font-size: 0.54rem !important;
+          }
+          .navbar-quick-link:not(.navbar-wa-link) {
+            display: none !important;
+          }
+          .navbar-right-cluster {
+            gap: 0.75rem !important;
+          }
+          .navbar-wa-link {
+            font-size: 0.74rem !important;
+            gap: 0.3rem !important;
+          }
+          .curved-menu-panel {
+            width: min(440px, 95vw) !important;
+            padding: 4.5rem 1.5rem 2rem 1.5rem !important;
+            overflow-y: auto !important;
+            -webkit-overflow-scrolling: touch !important;
+          }
+          .curved-link-text {
+            font-size: clamp(1.25rem, 5.5vw, 1.6rem) !important;
+          }
+          .curved-menu-dot {
+            left: -16px !important;
           }
         }
       `}</style>

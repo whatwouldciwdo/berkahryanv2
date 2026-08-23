@@ -42,14 +42,12 @@ export default function OnScrollPathExperience() {
 
   return (
     <div ref={containerRef} className="on-scroll-path-wrapper">
-      {/* ── 1. FULL-BLEED INDUSTRIAL PHOTO STRIP WITH DYNAMIC TOP/BOTTOM LIQUID MASKS ── */}
       <div
         className="content__bg content__bg--bottom"
         style={{
           backgroundImage: "url(/crane_rigging_site.jpg)",
         }}
       >
-        {/* Top inverted curve mask */}
         <svg
           className="separator separator--up"
           width="100%"
@@ -66,7 +64,6 @@ export default function OnScrollPathExperience() {
           />
         </svg>
 
-        {/* Center overlay banner */}
         <div className="content__title-box">
           <span className="content__title-pre">Standar K3 & Keselamatan</span>
           <h2 className="content__title-main">Zero Accident</h2>
@@ -75,7 +72,6 @@ export default function OnScrollPathExperience() {
           </p>
         </div>
 
-        {/* Bottom inverted curve mask */}
         <svg
           className="separator separator--down"
           width="100%"
@@ -93,52 +89,10 @@ export default function OnScrollPathExperience() {
         </svg>
       </div>
 
-      {/* ── 2. TWO-SIDED EDITORIAL + DYNAMIC MORPHING IMAGE CLIP ── */}
       <div className="content__sides-wrapper">
         <div className="container">
           <div className="content__sides">
-            {/* Left text column */}
             <div className="content__text">
-              <div
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "0.5rem",
-                  marginBottom: "1.25rem",
-                }}
-              >
-                <span
-                  style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: "0.4rem",
-                    padding: "0.35rem 0.85rem",
-                    borderRadius: "9999px",
-                    background: "rgba(42, 157, 110, 0.12)",
-                    border: "1px solid rgba(42, 157, 110, 0.35)",
-                    color: "#1b6d4b",
-                    fontFamily: "var(--font-mono)",
-                    fontSize: "0.75rem",
-                    fontWeight: 700,
-                    textTransform: "uppercase",
-                    letterSpacing: "0.08em",
-                  }}
-                >
-                  ✓ Sertifikasi K3 & HSE Resmi
-                </span>
-                <span
-                  style={{
-                    color: "var(--text-3)",
-                    fontFamily: "var(--font-mono)",
-                    fontSize: "0.75rem",
-                    letterSpacing: "0.1em",
-                    textTransform: "uppercase",
-                  }}
-                >
-                  Kemnaker RI
-                </span>
-              </div>
-
               <h3 className="content__side-heading">
                 Ketelitian Ekstrem. Sebelum Crane Menyentuh Site.
               </h3>
@@ -151,7 +105,34 @@ export default function OnScrollPathExperience() {
                 Tim engineering menyiapkan Lift Plan komprehensif: kalkulasi ground bearing pressure, radius manuver boom, hingga konfigurasi Steel Road Plate untuk mencegah penurunan tanah di area labil.
               </p>
 
-              <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", marginTop: "2rem" }}>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: "2.5rem",
+                  marginTop: "2.25rem",
+                  marginBottom: "2rem",
+                  width: "100%",
+                }}
+                className="k3-ebtke-logos-row"
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/images/logo-k3.png"
+                  alt="Sertifikasi K3 Kemnaker RI"
+                  style={{ height: "48px", width: "auto", objectFit: "contain", display: "block" }}
+                />
+
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/images/ebtke-esdm.png"
+                  alt="Akreditasi EBTKE ESDM"
+                  style={{ height: "48px", width: "auto", objectFit: "contain", display: "block" }}
+                />
+              </div>
+
+              <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
                 <Link
                   href="/tentang-kami"
                   className="btn btn-primary"
@@ -179,7 +160,6 @@ export default function OnScrollPathExperience() {
               </div>
             </div>
 
-            {/* Right side: Dynamic morphing SVG clip image */}
             <div className="content__clip-holder">
               <svg
                 className="image-clip"
@@ -212,7 +192,6 @@ export default function OnScrollPathExperience() {
         </div>
       </div>
 
-      {/* ── 3. FULL-WIDTH MULTI-LAYER CONTOUR TOPOGRAPHY WAVE LINES ── */}
       <div className="content__contour-section">
         <svg
           className="separator separator--solo separator--line"

@@ -1,36 +1,56 @@
-import React from "react";
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
+import Image from "next/image";
 import Link from "next/link";
-import { craneFleetData } from "../../data/siteData";
+import { notFound } from "next/navigation";
 import JsonLd from "../../components/JsonLd";
+import { craneFleetData } from "../../data/siteData";
+import styles from "./page.module.css";
 
-interface Props {
-  params: Promise<{ slug: string }>;
+interface Props { params: Promise<{ slug: string }>; }
+
+const brandLogos: Record<string, string> = {
+  Kato: "/images/Kato-logo.png",
+  Kobelco: "/images/kobelco-cranes-seeklogo.png",
+  Liebherr: "/images/Liebherr-Logo.png",
+  Tadano: "/images/tadano-1-logo-svg-vector.svg",
+  Sany: "/images/Sany-Logo.wine.svg",
+  Sumitomo: "/images/sumitomo-logo.png",
+  TCM: "/images/newtcm.png",
+  Unic: "/images/unic-logo-web.png",
+};
+
+const fleetImages: Record<string, string> = {
+  "telescopic-mobile-crane": "/images/services/telescopic-mobile/sewa-telescopic-mobile-crane-sany-cilegon.webp",
+  "truck-mounted-crane": "/images/services/truck-crane/sewa-truck-mounted-crane-unic-cilegon.png",
+  "crawler-crane": "/images/services/crawler-crane/sewa-crawler-crane-kobelco-cilegon.png",
+  "roughter-crane": "/images/services/roughter-crane/sewa-roughter-crane-50-ton-cilegon.png",
+  "forklift-rental": "/images/services/forklift/rental-forklift-heavy-duty-cilegon.png",
+  "trailer-logistics-road-plate": "/berkah-ryan-rental-alat-berat-cilegon.webp",
+};
+
+function getBrandMark(brand: string) {
+  return brand
+    .split(/\s+|\/|&/)
+    .filter(Boolean)
+    .map((word) => word[0])
+    .join("")
+    .slice(0, 3)
+    .toUpperCase();
 }
 
-export async function generateStaticParams() {
-  return craneFleetData.map((item) => ({
-    slug: item.slug,
-  }));
+export function generateStaticParams() {
+  return craneFleetData.map((item) => ({ slug: item.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const item = craneFleetData.find((d) => d.slug === slug);
-
-  if (!item) {
-    return {
-      title: "Layanan Tidak Ditemukan",
-    };
-  }
+  const item = craneFleetData.find((entry) => entry.slug === slug);
+  if (!item) return { title: "Layanan Tidak Ditemukan" };
 
   return {
     title: `Sewa ${item.name} (${item.capacityRange}) Cilegon Banten | CV. Berkah Ryan`,
     description: `Rental ${item.name} kapasitas ${item.capacityRange} di Cilegon & Banten. Bersertifikasi SIA Kemnaker RI, operator berlisensi SIO aktif, siap support proyek 24/7.`,
-    alternates: {
-      canonical: `https://berkahryan.com/layanan/${item.slug}`,
-    },
+    alternates: { canonical: `https://berkahryan.com/layanan/${item.slug}` },
     openGraph: {
       title: `Sewa ${item.name} Cilegon Banten - CV. Berkah Ryan`,
       description: item.shortDesc,
@@ -41,347 +61,160 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ServiceDetailPage({ params }: Props) {
   const { slug } = await params;
-  const item = craneFleetData.find((d) => d.slug === slug);
+  const item = craneFleetData.find((entry) => entry.slug === slug);
+  if (!item) notFound();
+  const recommendedFleet = craneFleetData.filter((entry) => entry.slug !== item.slug);
 
-  if (!item) {
-    notFound();
-  }
-
-  // Generate Service & FAQ Schema for AI Search / Agentic SEO
+  const whatsappUrl = `https://wa.me/6281808999462?text=Halo%20CV.%20Berkah%20Ryan,%20saya%20ingin%20meminta%20penawaran%20harga%20sewa%20${encodeURIComponent(item.name)}%20di%20lokasi%20kami.`;
   const serviceJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    name: `Sewa ${item.name} Cilegon Banten`,
-    description: item.description,
+    "@context": "https://schema.org", "@type": "Service",
+    name: `Sewa ${item.name} Cilegon Banten`, description: item.description,
     provider: {
-      "@type": "EquipmentRentalAgency",
-      name: "CV. Berkah Ryan",
-      url: "https://berkahryan.com",
-      telephone: "+6281808999462",
-      address: {
-        "@type": "PostalAddress",
-        addressLocality: "Cilegon",
-        addressRegion: "Banten",
-        postalCode: "42415",
-        addressCountry: "ID",
-      },
+      "@type": "EquipmentRentalAgency", name: "CV. Berkah Ryan",
+      url: "https://berkahryan.com", telephone: "+6281808999462",
+      address: { "@type": "PostalAddress", addressLocality: "Cilegon", addressRegion: "Banten", postalCode: "42415", addressCountry: "ID" },
     },
     areaServed: [
-      { "@type": "City", name: "Cilegon" },
-      { "@type": "City", name: "Serang" },
+      { "@type": "City", name: "Cilegon" }, { "@type": "City", name: "Serang" },
       { "@type": "AdministrativeArea", name: "Banten" },
     ],
-    serviceType: "Heavy Equipment Rental",
-    url: `https://berkahryan.com/layanan/${item.slug}`,
+    serviceType: "Heavy Equipment Rental", url: `https://berkahryan.com/layanan/${item.slug}`,
   };
-
   const faqJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: item.faqs.map((f) => ({
-      "@type": "Question",
-      name: f.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: f.answer,
-      },
+    "@context": "https://schema.org", "@type": "FAQPage",
+    mainEntity: item.faqs.map((faq) => ({
+      "@type": "Question", name: faq.question,
+      acceptedAnswer: { "@type": "Answer", text: faq.answer },
     })),
   };
 
   return (
-    <div style={{ paddingTop: "7.5rem", paddingBottom: "6rem" }}>
+    <main className={styles.page}>
       <JsonLd data={[serviceJsonLd, faqJsonLd]} />
 
-      <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 1.5rem" }}>
-        {/* Breadcrumb */}
-        <div
-          style={{
-            display: "flex",
-            gap: "0.5rem",
-            fontSize: "0.85rem",
-            color: "var(--text-muted)",
-            marginBottom: "1.5rem",
-          }}
-        >
-          <Link href="/" style={{ color: "var(--text-muted)", textDecoration: "none" }}>
-            Beranda
-          </Link>
-          <span>/</span>
-          <Link href="/layanan" style={{ color: "var(--text-muted)", textDecoration: "none" }}>
-            Layanan
-          </Link>
-          <span>/</span>
-          <span style={{ color: "var(--amber-primary)" }}>{item.name}</span>
+      <section className={styles.intro} aria-labelledby="service-title">
+        <div className={styles.heroCopy}>
+          <p className={styles.eyebrow}>{item.category} · Cilegon, Banten</p>
+          <h1 id="service-title">Sewa {item.name} untuk pengangkatan yang presisi.</h1>
+          <p>{item.shortDesc}</p>
         </div>
+      </section>
 
-        {/* Header Hero for Unit */}
-        <div style={{ marginBottom: "4rem" }}>
-          <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap", marginBottom: "1rem" }}>
-            <span className="badge-amber">{item.category}</span>
-            <span className="badge-k3">100% SIA Kemnaker Certified</span>
-          </div>
+      <section className={styles.overview} aria-label="Ringkasan layanan">
+        <dl className={styles.metadata}>
+          <div><dt>Layanan</dt><dd>{item.name}</dd></div>
+          <div><dt>Kapasitas</dt><dd>{item.capacityRange}</dd></div>
+          <div><dt>Cakupan</dt><dd>Cilegon<br />Serang & Banten</dd></div>
+          <div><dt>Standar</dt><dd>SIA Kemnaker RI<br />Operator SIO aktif</dd></div>
+        </dl>
+      </section>
 
-          <h1
-            style={{
-              fontSize: "clamp(2.25rem, 5vw, 3.5rem)",
-              fontWeight: 850,
-              lineHeight: 1.1,
-              marginBottom: "1.25rem",
-            }}
-          >
-            Sewa {item.name}{" "}
-            <span
-              style={{
-                background:
-                  "linear-gradient(135deg, var(--amber-light) 0%, var(--amber-primary) 50%, var(--orange-accent) 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-              }}
-            >
-              ({item.capacityRange})
-            </span>
-          </h1>
+      <figure className={styles.heroImage}>
+        <Image
+          src="/berkah-ryan-rental-alat-berat-cilegon.webp"
+          alt={`${item.name} CV. Berkah Ryan siap mendukung proyek di Cilegon dan Banten`}
+          fill
+          priority
+          sizes="(max-width: 1024px) 100vw, calc(100vw - 8rem)"
+        />
+      </figure>
 
-          <p
-            style={{
-              fontSize: "1.15rem",
-              color: "var(--text-secondary)",
-              maxWidth: "850px",
-              lineHeight: 1.7,
-            }}
-          >
-            {item.description}
-          </p>
+      <section className={styles.narrative} aria-label="Tentang layanan">
+        <div className={styles.narrativeCopy}>
+          <p>{item.description}</p>
+          <p>Setiap pekerjaan direncanakan berdasarkan kapasitas angkat, kondisi lokasi, radius kerja, dan standar keselamatan. Tim kami membantu menyiapkan unit serta operator yang sesuai agar proses lifting berjalan aman, presisi, dan efisien.</p>
         </div>
+      </section>
 
-        {/* Grid 2-Column: Specs & Applications */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
-            gap: "3rem",
-            marginBottom: "5rem",
-          }}
-        >
-          {/* Models Specification Table */}
-          <div className="premium-card" style={{ padding: "2.5rem" }}>
-            <h2 style={{ fontSize: "1.4rem", marginBottom: "1.5rem", color: "var(--text-1)" }}>
-              Daftar Merek & Spesifikasi Unit
-            </h2>
-
-            <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-              {item.models.map((m, idx) => (
-                <div
-                  key={idx}
-                  style={{
-                    padding: "1.25rem",
-                    background: "var(--bg-main)",
-                    borderRadius: "14px",
-                    border: "1px solid var(--border)",
-                  }}
-                >
-                  <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                      alignItems: "center",
-                      marginBottom: "0.4rem",
-                    }}
-                  >
-                    <span style={{ fontSize: "1.05rem", fontWeight: 700, color: "var(--text-1)" }}>
-                      {m.brand}
-                    </span>
-                    <span
-                      className="font-mono-spec"
-                      style={{
-                        fontSize: "0.95rem",
-                        fontWeight: 700,
-                        color: "var(--accent)",
-                      }}
-                    >
-                      {m.capacity}
-                    </span>
+      <section className={styles.details}>
+        <div className={styles.contentContainer}>
+          <div className={styles.detailGrid}>
+            <article className={styles.models}>
+              <div className={styles.articleHeading}><p>Unit tersedia</p><h3>Merek & spesifikasi</h3></div>
+              <div className={styles.modelList}>
+                {item.models.map((model) => (
+                  <div className={styles.modelRow} key={`${model.brand}-${model.capacity}`}>
+                    <div className={styles.brandCell}>
+                      <span className={styles.brandLogo} aria-hidden="true">
+                        {brandLogos[model.brand] ? (
+                          <Image src={brandLogos[model.brand]} alt="" width={100} height={40} sizes="100px" />
+                        ) : (
+                          <span>{getBrandMark(model.brand)}</span>
+                        )}
+                      </span>
+                    </div>
+                    <span className={styles.modelCapacity}>{model.capacity}</span>
                   </div>
-                  {m.specsNote && (
-                    <p style={{ fontSize: "0.8rem", color: "var(--text-muted)", lineHeight: 1.4 }}>
-                      {m.specsNote}
-                    </p>
-                  )}
-                </div>
-              ))}
-            </div>
-
-            <div
-              style={{
-                marginTop: "2rem",
-                paddingTop: "1.5rem",
-                borderTop: "1px solid var(--border-subtle)",
-              }}
-            >
-              <div
-                style={{
-                  fontSize: "0.75rem",
-                  color: "var(--text-muted)",
-                  textTransform: "uppercase",
-                  marginBottom: "0.5rem",
-                }}
-              >
-                Standar K3 & Legalitas Unit:
-              </div>
-              <p
-                style={{
-                  fontSize: "0.85rem",
-                  color: "var(--emerald-status)",
-                  fontWeight: 600,
-                  lineHeight: 1.5,
-                }}
-              >
-                ✓ {item.k3Compliance}
-              </p>
-            </div>
-          </div>
-
-          {/* Applications & Booking Action */}
-          <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
-            <div className="premium-card" style={{ padding: "2.5rem" }}>
-              <h2 style={{ fontSize: "1.4rem", marginBottom: "1.25rem", color: "var(--text-1)" }}>
-                Area Aplikasi & Skenario Penggunaan
-              </h2>
-              <ul
-                style={{
-                  listStyle: "none",
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "0.75rem",
-                }}
-              >
-                {item.applications.map((app, aIdx) => (
-                  <li
-                    key={aIdx}
-                    style={{
-                      display: "flex",
-                      alignItems: "flex-start",
-                      gap: "0.75rem",
-                      fontSize: "0.95rem",
-                      color: "var(--text-secondary)",
-                      lineHeight: 1.5,
-                    }}
-                  >
-                    <span
-                      style={{
-                        color: "var(--accent)",
-                        fontWeight: 800,
-                        marginTop: "0.1rem",
-                      }}
-                    >
-                      ✓
-                    </span>
-                    <span>{app}</span>
-                  </li>
                 ))}
-              </ul>
-            </div>
-
-            {/* Quick Quote Card */}
-            <div
-              style={{
-                background:
-                  "linear-gradient(135deg, rgba(236, 197, 198, 0.3) 0%, rgba(255, 255, 255, 0.95) 100%)",
-                border: "1px solid var(--border)",
-                borderRadius: "20px",
-                padding: "2rem",
-              }}
-            >
-              <h3 style={{ fontSize: "1.25rem", marginBottom: "0.5rem", color: "var(--text-1)" }}>
-                Minta Penawaran Sewa {item.name}
-              </h3>
-              <p
-                style={{
-                  fontSize: "0.875rem",
-                  color: "var(--text-secondary)",
-                  marginBottom: "1.5rem",
-                  lineHeight: 1.5,
-                }}
-              >
-                Dapatkan kalkulasi harga sewa harian, mingguan, atau bulanan include
-                operator SIO dan mobilisasi armada.
-              </p>
-              <a
-                href={`https://wa.me/6281808999462?text=Halo%20CV.%20Berkah%20Ryan,%20saya%20ingin%20meminta%20penawaran%20harga%20sewa%20${encodeURIComponent(
-                  item.name
-                )}%20di%20lokasi%20kami.`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-fill"
-                style={{ width: "100%", justifyContent: "center" }}
-              >
-                Chat WhatsApp Admin 1 (0818 0899 9462)
-              </a>
-            </div>
-          </div>
-        </div>
-
-        {/* FAQ Section for Service (Agentic SEO Anchor) */}
-        <div style={{ marginBottom: "5rem" }}>
-          <div style={{ marginBottom: "2.5rem" }}>
-            <span className="badge-steel" style={{ marginBottom: "0.75rem" }}>
-              Tanya Jawab
-            </span>
-            <h2 style={{ fontSize: "2rem", fontWeight: 800 }}>
-              Frequently Asked Questions (FAQ) — {item.name}
-            </h2>
-          </div>
-
-          <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
-            {item.faqs.map((faq, fIdx) => (
-              <div
-                key={fIdx}
-                className="premium-card"
-                style={{ padding: "1.75rem 2rem" }}
-              >
-                <h3
-                  style={{
-                    fontSize: "1.1rem",
-                    marginBottom: "0.75rem",
-                    color: "var(--text-1)",
-                  }}
-                >
-                  {faq.question}
-                </h3>
-                <p
-                  style={{
-                    fontSize: "0.9rem",
-                    color: "var(--text-secondary)",
-                    lineHeight: 1.6,
-                  }}
-                >
-                  {faq.answer}
-                </p>
               </div>
+            </article>
+
+            <article className={styles.applications}>
+              <div className={styles.articleHeading}><p>Lingkup pekerjaan</p><h3>Aplikasi utama</h3></div>
+              <ol>
+                {item.applications.map((application, index) => (
+                  <li key={application}><span>{String(index + 1).padStart(2, "0")}</span>{application}</li>
+                ))}
+              </ol>
+            </article>
+          </div>
+
+        </div>
+      </section>
+
+      <section className={styles.faq}>
+        <div className={styles.contentContainer}>
+          <header className={styles.faqHeading}><p>FAQ</p><h2>Sebelum Anda menyewa.</h2></header>
+          <div className={styles.faqList}>
+            {item.faqs.map((faq, index) => (
+              <details key={faq.question} open={index === 0}>
+                <summary>{faq.question}<span aria-hidden="true" /></summary><p>{faq.answer}</p>
+              </details>
             ))}
           </div>
+          <nav className={styles.bottomNav} aria-label="Navigasi layanan">
+            <Link href="/layanan">← Semua layanan</Link><Link href="/armada">Lihat armada lengkap →</Link>
+          </nav>
         </div>
+      </section>
 
-        {/* Other Fleet Navigation */}
-        <div
-          style={{
-            borderTop: "1px solid var(--border-subtle)",
-            paddingTop: "3rem",
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            flexWrap: "wrap",
-            gap: "1rem",
-          }}
-        >
-          <Link href="/layanan" style={{ color: "var(--amber-primary)", textDecoration: "none", fontWeight: 600 }}>
-            ← Kembali ke Katalog Semua Layanan
-          </Link>
-          <Link href="/armada" style={{ color: "var(--text-secondary)", textDecoration: "none", fontSize: "0.9rem" }}>
-            Lihat Galeri Armada Lengkap →
-          </Link>
+      <section className={styles.recommendations} aria-labelledby="fleet-recommendations-title">
+        <div className={styles.recommendationHeading}>
+          <div>
+            <p>Rekomendasi armada</p>
+            <h2 id="fleet-recommendations-title">Pilihan unit lainnya.</h2>
+          </div>
+          <p className={styles.swipeHint}>Geser untuk melihat <span aria-hidden="true">→</span></p>
         </div>
-      </div>
-    </div>
+        <div className={styles.fleetCarousel} role="list" aria-label="Rekomendasi armada lainnya">
+          {recommendedFleet.map((fleet) => (
+            <Link href={`/layanan/${fleet.slug}`} className={styles.fleetCard} role="listitem" key={fleet.slug}>
+              <div className={styles.fleetCardImage}>
+                <Image
+                  src={fleetImages[fleet.slug]}
+                  alt={`${fleet.name} kapasitas ${fleet.capacityRange}`}
+                  fill
+                  sizes="(max-width: 560px) 82vw, (max-width: 1024px) 45vw, 31vw"
+                />
+              </div>
+              <div className={styles.fleetCardCopy}>
+                <p>{fleet.category}</p>
+                <h3>{fleet.name}</h3>
+                <div><span>{fleet.capacityRange}</span><span aria-hidden="true">↗</span></div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <section className={styles.ctaSection} aria-label="Permintaan penawaran">
+        <div className={styles.contentContainer}>
+          <div className={styles.quote}>
+            <div><p>Butuh estimasi yang akurat?</p><h2>Diskusikan kebutuhan lifting Anda dengan tim kami.</h2></div>
+            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">Minta penawaran <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+      </section>
+    </main>
   );
 }

@@ -74,7 +74,6 @@ export default function FleetUnitImage({ images, alt }: FleetUnitImageProps) {
         );
       })}
 
-      {/* Modern dot indicator if multiple images */}
       {images.length > 1 && (
         <div
           style={{

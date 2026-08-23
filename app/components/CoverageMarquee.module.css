@@ -1,0 +1,122 @@
+/* Coverage areas marquee */
+.coverageSection {
+  --coverage-gutter: clamp(1.25rem, 4vw, 4.75rem);
+  --coverage-rule: rgba(94, 86, 83, 0.22);
+  --coverage-bg: var(--bg-main);
+  padding: clamp(4.5rem, 8vw, 8.5rem) 0;
+  overflow: hidden;
+  background: var(--coverage-bg);
+}
+
+.bordered {
+  border-bottom: 1px solid var(--coverage-rule);
+}
+
+.compact {
+  padding: clamp(0.5rem, 1.5vw, 1.5rem) 0 clamp(2rem, 4vw, 3.5rem);
+}
+
+.coverageHeader {
+  text-align: center;
+  margin-bottom: clamp(2.5rem, 5vw, 4.5rem);
+  padding: 0 var(--coverage-gutter);
+}
+
+.coverageHeader span {
+  font-family: var(--font-mono);
+  font-size: clamp(0.7rem, 0.8vw, 0.82rem);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+
+.marqueeWrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.25rem, 2.5vw, 2.25rem);
+}
+
+.marqueeFadeLeft,
+.marqueeFadeRight {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: clamp(3rem, 12vw, 10rem);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.marqueeFadeLeft {
+  left: 0;
+  background: linear-gradient(90deg, var(--coverage-bg) 0%, transparent 100%);
+}
+
+.marqueeFadeRight {
+  right: 0;
+  background: linear-gradient(270deg, var(--coverage-bg) 0%, transparent 100%);
+}
+
+.marqueeRow {
+  display: flex;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.marqueeTrack {
+  display: flex;
+  align-items: center;
+  gap: clamp(1.5rem, 3.5vw, 3.5rem);
+  animation: marqueeScroll 28s linear infinite;
+  will-change: transform;
+}
+
+.marqueeRight .marqueeTrack {
+  animation-direction: reverse;
+}
+
+@keyframes marqueeScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.areaTag {
+  font-size: clamp(1.35rem, 2.8vw, 2.85rem);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  color: var(--text-2);
+  white-space: nowrap;
+  transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.areaTag:hover {
+  color: var(--text-1);
+  transform: translateY(-2px);
+}
+
+.highlightTag {
+  color: var(--text-1);
+  font-weight: 600;
+}
+
+.coverageFootnote {
+  text-align: center;
+  margin-top: clamp(2.5rem, 5vw, 4.5rem);
+  padding: 0 var(--coverage-gutter);
+  font-family: var(--font-mono);
+  font-size: clamp(0.68rem, 0.78vw, 0.78rem);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+
+.coverageFootnote strong {
+  color: var(--text-1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marqueeTrack { animation: none; }
+}

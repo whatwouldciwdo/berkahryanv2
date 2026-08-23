@@ -33,7 +33,6 @@ export default function ProyekPage() {
       <JsonLd data={projectListJsonLd} />
 
       <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 1.5rem" }}>
-        {/* Breadcrumb & Header */}
         <div style={{ marginBottom: "4rem" }}>
           <div
             style={{
@@ -80,7 +79,6 @@ export default function ProyekPage() {
           </p>
         </div>
 
-        {/* Project List */}
         <div style={{ display: "flex", flexDirection: "column", gap: "2.5rem", marginBottom: "5rem" }}>
           {portfolioData.map((item) => (
             <div
@@ -89,8 +87,8 @@ export default function ProyekPage() {
               style={{
                 padding: "2.5rem",
                 display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
-                gap: "2.5rem",
+                gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 300px), 1fr))",
+                gap: "2rem",
                 alignItems: "center",
               }}
             >

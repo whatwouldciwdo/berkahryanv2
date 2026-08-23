@@ -79,7 +79,6 @@ export default async function BlogPostDetailPage({ params }: Props) {
       <JsonLd data={articleJsonLd} />
 
       <div style={{ maxWidth: "850px", margin: "0 auto", padding: "0 1.5rem" }}>
-        {/* Breadcrumb */}
         <div
           style={{
             display: "flex",
@@ -100,7 +99,6 @@ export default async function BlogPostDetailPage({ params }: Props) {
           <span style={{ color: "var(--amber-primary)" }}>{post.category}</span>
         </div>
 
-        {/* Article Header */}
         <header style={{ marginBottom: "3rem" }}>
           <div style={{ display: "flex", gap: "0.75rem", alignItems: "center", marginBottom: "1rem" }}>
             <span className="badge-amber">{post.category}</span>
@@ -134,7 +132,6 @@ export default async function BlogPostDetailPage({ params }: Props) {
           </p>
         </header>
 
-        {/* Article Body Content */}
         <div
           style={{
             color: "var(--text-secondary)",
@@ -145,7 +142,6 @@ export default async function BlogPostDetailPage({ params }: Props) {
           dangerouslySetInnerHTML={{ __html: post.contentHtml }}
         />
 
-        {/* Author / HSE Note Box */}
         <div
           style={{
             padding: "2rem",
@@ -187,7 +183,6 @@ export default async function BlogPostDetailPage({ params }: Props) {
           </div>
         </div>
 
-        {/* Related Action */}
         <div
           style={{
             display: "flex",

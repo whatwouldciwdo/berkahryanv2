@@ -36,9 +36,16 @@ yarn-error.log*
 # vercel
 .vercel
 
+# netlify
+.netlify
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
 
 # temp files
 /temp/
+
+# agent tooling files
+AGENTS.md
+CLAUDE.md

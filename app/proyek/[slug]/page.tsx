@@ -67,7 +67,6 @@ export default async function ProjectDetailPage({ params }: Props) {
       <JsonLd data={caseStudyJsonLd} />
 
       <div style={{ maxWidth: "1000px", margin: "0 auto", padding: "0 1.5rem" }}>
-        {/* Breadcrumb */}
         <div
           style={{
             display: "flex",
@@ -88,7 +87,6 @@ export default async function ProjectDetailPage({ params }: Props) {
           <span style={{ color: "var(--amber-primary)" }}>{item.client}</span>
         </div>
 
-        {/* Title and Metadata */}
         <div style={{ marginBottom: "3rem" }}>
           <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap", marginBottom: "1rem" }}>
             <span className="badge-amber">{item.category}</span>
@@ -133,7 +131,6 @@ export default async function ProjectDetailPage({ params }: Props) {
           </div>
         </div>
 
-        {/* Highlight Card */}
         <div
           style={{
             padding: "2rem",
@@ -151,7 +148,6 @@ export default async function ProjectDetailPage({ params }: Props) {
           </p>
         </div>
 
-        {/* Deep Dive Content */}
         <div style={{ display: "flex", flexDirection: "column", gap: "2.5rem", marginBottom: "4rem" }}>
           <div>
             <h2 style={{ fontSize: "1.6rem", color: "var(--text-1)", marginBottom: "1rem" }}>
@@ -210,7 +206,6 @@ export default async function ProjectDetailPage({ params }: Props) {
           </div>
         </div>
 
-        {/* Project Contact Action */}
         <div
           style={{
             background: "var(--bg-surface)",

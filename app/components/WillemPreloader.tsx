@@ -26,7 +26,6 @@ export default function WillemPreloader() {
       const headerLetter = container.querySelectorAll<HTMLElement>(".willem__letter-white");
       const navItems = container.querySelectorAll<HTMLElement>(".willen-nav .willem-nav__link, .osmo-credits__p");
 
-      // 1. Initial State: Letters are initially below viewport
       gsap.set(loadingLetter, { yPercent: 110 });
       gsap.set(headerLetter, { yPercent: 110 });
       gsap.set(navItems, { yPercent: 110 });
@@ -58,155 +57,150 @@ export default function WillemPreloader() {
         },
       });
 
-    // 2. STEP 1: Animate BERKAH & RYAN entering from below
-    if (loadingLetter.length) {
-      tl.to(loadingLetter, {
-        yPercent: 0,
-        stagger: 0.03,
-        duration: 1.2,
-      });
-    }
-
-    // 3. STEP 2: The box between them opens and images expand
-    if (box.length) {
-      tl.to(
-        box,
-        {
-          width: "1.1em",
-          duration: 1.25,
-        },
-        "< 0.8"
-      );
-    }
-
-    if (growingImage.length) {
-      tl.to(
-        growingImage,
-        {
-          width: "100%",
-          duration: 1.25,
-        },
-        "<"
-      );
-    }
-
-    if (headingStart.length) {
-      tl.to(
-        headingStart,
-        {
-          x: "-0.08em",
-          duration: 1.25,
-        },
-        "<"
-      );
-    }
-
-    if (headingEnd.length) {
-      tl.to(
-        headingEnd,
-        {
-          x: "0.08em",
-          duration: 1.25,
-        },
-        "<"
-      );
-    }
-
-    // 4. STEP 3: Hold and flip through frames: Logo (1) -> Image (2) -> Image (3) -> Hero (4)
-    if (frame1) {
-      tl.to(frame1, {
-        opacity: 0,
-        duration: 0.35,
-        ease: "power1.inOut",
-      }, "+=1.8");
-    }
-
-    if (frame2) {
-      tl.to(frame2, {
-        opacity: 0,
-        duration: 0.25,
-        ease: "power1.inOut",
-      }, "+=0.35");
-    }
-
-    if (frame3) {
-      tl.to(frame3, {
-        opacity: 0,
-        duration: 0.25,
-        ease: "power1.inOut",
-      }, "+=0.35");
-    }
-
-    // 5. STEP 4: Box and image expand to 100vw and 100dvh full screen
-    const boxInner = container.querySelectorAll<HTMLElement>(".willem-loader__box-inner");
-
-    if (growingImage.length) {
-      tl.to(
-        growingImage,
-        {
-          width: "100vw",
-          height: "100dvh",
-          duration: 1.8,
-          ease: "expo.inOut",
-        },
-        "+=0.1"
-      );
-    }
-
-    if (box.length) {
-      tl.to(
-        box,
-        {
-          width: "115vw",
-          height: "100dvh",
-          duration: 1.8,
-          ease: "expo.inOut",
-        },
-        "<"
-      );
-    }
-
-    if (boxInner.length) {
-      tl.to(
-        boxInner,
-        {
-          height: "100dvh",
-          duration: 1.8,
-          ease: "expo.inOut",
-        },
-        "<"
-      );
-    }
-
-    // 6. STEP 5: Final text reveal once fully expanded
-    if (headerLetter.length) {
-      tl.to(
-        headerLetter,
-        {
+      if (loadingLetter.length) {
+        tl.to(loadingLetter, {
           yPercent: 0,
-          duration: 1.1,
-          ease: "expo.out",
-          stagger: 0.025,
-        },
-        "< 0.9"
-      );
-    }
+          stagger: 0.03,
+          duration: 1.2,
+        });
+      }
 
-    if (navItems.length) {
-      tl.to(
-        navItems,
-        {
-          yPercent: 0,
-          duration: 1.1,
-          ease: "expo.out",
-          stagger: 0.06,
-        },
-        "<"
-      );
-    }
+      if (box.length) {
+        tl.to(
+          box,
+          {
+            width: "1.1em",
+            duration: 1.25,
+          },
+          "< 0.8"
+        );
+      }
 
-    // Pause for 0.7s so user can see the full reveal
-    tl.to({}, { duration: 0.7 });
+      if (growingImage.length) {
+        tl.to(
+          growingImage,
+          {
+            width: "100%",
+            duration: 1.25,
+          },
+          "<"
+        );
+      }
+
+      if (headingStart.length) {
+        tl.to(
+          headingStart,
+          {
+            x: "-0.08em",
+            duration: 1.25,
+          },
+          "<"
+        );
+      }
+
+      if (headingEnd.length) {
+        tl.to(
+          headingEnd,
+          {
+            x: "0.08em",
+            duration: 1.25,
+          },
+          "<"
+        );
+      }
+
+      if (frame1) {
+        tl.to(frame1, {
+          opacity: 0,
+          duration: 0.35,
+          ease: "power1.inOut",
+        }, "+=1.8");
+      }
+
+      if (frame2) {
+        tl.to(frame2, {
+          opacity: 0,
+          duration: 0.25,
+          ease: "power1.inOut",
+        }, "+=0.35");
+      }
+
+      if (frame3) {
+        tl.to(frame3, {
+          opacity: 0,
+          duration: 0.25,
+          ease: "power1.inOut",
+        }, "+=0.35");
+      }
+
+      const boxInner = container.querySelectorAll<HTMLElement>(".willem-loader__box-inner");
+
+      if (growingImage.length) {
+        tl.to(
+          growingImage,
+          {
+            width: "100vw",
+            height: "100dvh",
+            duration: 1.8,
+            ease: "expo.inOut",
+          },
+          "+=0.1"
+        );
+      }
+
+      if (box.length) {
+        tl.to(
+          box,
+          {
+            width: "115vw",
+            height: "100dvh",
+            duration: 1.8,
+            ease: "expo.inOut",
+          },
+          "<"
+        );
+      }
+
+      if (boxInner.length) {
+        tl.to(
+          boxInner,
+          {
+            height: "100dvh",
+            duration: 1.8,
+            ease: "expo.inOut",
+          },
+          "<"
+        );
+      }
+
+      if (headerLetter.length) {
+        tl.to(
+          headerLetter,
+          {
+            yPercent: 0,
+            duration: 1.1,
+            ease: "expo.out",
+            stagger: 0.025,
+          },
+          "< 0.9"
+        );
+      }
+
+      if (navItems.length) {
+        tl.to(
+          navItems,
+          {
+            yPercent: 0,
+            duration: 1.1,
+            ease: "expo.out",
+            stagger: 0.06,
+          },
+          "<"
+        );
+      }
+
+      // Pause for 0.7s so user can see the full reveal
+      tl.to({}, { duration: 0.7 });
     }, container);
 
     return () => {
@@ -228,12 +222,11 @@ export default function WillemPreloader() {
         width: "100vw",
         height: "100dvh",
         zIndex: 999999,
-        background: "#0c0c0e",
-        color: "#f0ede8",
+        background: "#E9E6E7",
+        color: "#5E5653",
         overflow: "hidden",
       }}
     >
-      {/* ── LOADER SPREAD ANIMATION ── */}
       <div className="willem-loader">
         <div className="willem__h1">
           <div className="willem__h1-start">
@@ -249,13 +242,12 @@ export default function WillemPreloader() {
             <div className="willem-loader__box-inner">
               <div className="willem__growing-image">
                 <div className="willem__growing-image-wrap">
-                  {/* FRAME 1: LOGO ONLY (SOLID DARK BG #0c0c0e, NO UNDERLYING IMAGES BLEEDING) */}
                   <div
                     className="willem__cover-image-extra is--1"
                     style={{
                       position: "absolute",
                       inset: 0,
-                      background: "#0c0c0e",
+                      background: "#E9E6E7",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
@@ -276,39 +268,62 @@ export default function WillemPreloader() {
                     />
                   </div>
 
-                  {/* FRAME 2: PROYEK 2 (z-index 7) */}
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
+                  <div
                     className="willem__cover-image-extra is--2"
-                    src="/expert_operator.png"
-                    alt="Crane Lifting 2"
                     style={{
                       position: "absolute",
                       inset: 0,
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "cover",
+                      background: "#E9E6E7",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      padding: "0",
+                      overflow: "hidden",
                       zIndex: 7,
                     }}
-                  />
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src="/images/services/telescopic-mobile/sewa-telescopic-mobile-crane-sany-cilegon.webp"
+                      alt="Telescopic Mobile Crane - CV Berkah Ryan"
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "contain",
+                        transform: "scale(1.45)",
+                        display: "block",
+                      }}
+                    />
+                  </div>
 
-                  {/* FRAME 3: PROYEK 3 (z-index 5) */}
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
+                  <div
                     className="willem__cover-image-extra is--3"
-                    src="/crane_rigging_site.jpg"
-                    alt="Heavy Machinery Site"
                     style={{
                       position: "absolute",
                       inset: 0,
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "cover",
+                      background: "#E9E6E7",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      padding: "2%",
+                      overflow: "hidden",
                       zIndex: 5,
                     }}
-                  />
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src="/images/services/roughter-crane/sewa-roughter-crane-50-ton-cilegon.png"
+                      alt="Roughter Crane - CV Berkah Ryan"
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "contain",
+                        transform: "scale(1.18)",
+                        display: "block",
+                      }}
+                    />
+                  </div>
 
-                  {/* FRAME 4: FINAL ARMADA HERO (z-index 1) */}
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     className="willem__cover-image"
@@ -346,7 +361,6 @@ export default function WillemPreloader() {
         </div>
       </div>
 
-      {/* ── REVEALED CONTENT ONCE EXPANDED ── */}
       <div className="willem-header__content">
         <div className="willem-header__top">
           <nav className="willen-nav">

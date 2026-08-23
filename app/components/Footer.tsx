@@ -13,35 +13,16 @@ export default function Footer() {
         marginTop: "-48px",
         position: "relative",
         zIndex: 20,
-        borderTopLeftRadius: "clamp(36px, 5.5vw, 64px)",
-        borderTopRightRadius: "clamp(36px, 5.5vw, 64px)",
+        borderTopLeftRadius: "clamp(28px, 5.5vw, 64px)",
+        borderTopRightRadius: "clamp(28px, 5.5vw, 64px)",
         borderTop: "1px solid rgba(255, 255, 255, 0.5)",
         boxShadow: "0 -20px 60px rgba(0, 0, 0, 0.18)",
         overflow: "hidden",
       }}
     >
-        <div className="container" style={{ maxWidth: "1400px", margin: "0 auto", padding: "0 40px" }}>
-          {/* BIG CTA TITLE SECTION (Urban slate theme matching palette) */}
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
-              textAlign: "center",
-              marginBottom: "150px",
-            }}
-          >
-            <h2
-              style={{
-                fontSize: "clamp(2.75rem, 6.5vw, 5rem)",
-                fontWeight: 300,
-                lineHeight: 1.2,
-                letterSpacing: "-2px",
-                fontFamily: "var(--font-heading), sans-serif",
-                color: "var(--text-1, #242120)",
-              }}
-            >
+        <div className="container footer-main-container">
+          <div className="footer-cta-box">
+            <h2 className="footer-cta-heading">
               Ada yang bisa kami bantu?
               <br />
               <Link
@@ -61,21 +42,8 @@ export default function Footer() {
             </h2>
           </div>
 
-          {/* HORIZONTAL FOOTER LINKS BAR */}
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              flexWrap: "wrap",
-              gap: "30px",
-              padding: "20px 0",
-              borderTop: "1px solid var(--border)",
-              borderBottom: "1px solid var(--border)",
-              fontSize: "0.8rem",
-              color: "var(--text-2)",
-            }}
-          >
-            <div>© 2026 Berkah Ryan Heavy Equipment.</div>
+          <div className="footer-links-bar">
+            <div>© 2026 CV. Berkah Ryan Heavy Equipment.</div>
             <Link
               href="/layanan/telescopic-mobile-crane"
               style={{ color: "inherit", textDecoration: "none" }}
@@ -108,61 +76,40 @@ export default function Footer() {
             >
               Unduh Company Profile
             </a>
-            <a
-              href="https://linkedin.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ marginLeft: "auto", fontWeight: "bold", color: "#111111", textDecoration: "none" }}
-              aria-label="LinkedIn"
-            >
-              in
-            </a>
           </div>
         </div>
 
-        {/* PARTNERS & CERTIFICATION STRIP */}
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            flexWrap: "wrap",
-          }}
-        >
-          {/* LOGO PALING KIRI: BERKAH RYAN (LEBIH BESAR) */}
+        <div className="footer-partner-strip">
           <div className="footer-partner-item" style={{ flex: "1.3" }}>
             <Image
               src="/berkahryan-logo.svg"
               alt="CV. Berkah Ryan"
               width={220}
               height={80}
-              style={{ height: "54px", width: "auto", objectFit: "contain", opacity: 0.95 }}
+              style={{ height: "48px", width: "auto", objectFit: "contain", opacity: 0.95 }}
             />
           </div>
 
-          {/* LOGO 2: ESDM EBTKE (UKURAN STANDAR 40px) */}
           <div className="footer-partner-item">
             <Image
               src="/images/ebtke-esdm.png"
               alt="Terverifikasi ESDM EBTKE"
               width={140}
               height={60}
-              style={{ height: "40px", width: "auto", objectFit: "contain", mixBlendMode: "multiply" }}
+              style={{ height: "36px", width: "auto", objectFit: "contain", mixBlendMode: "multiply" }}
             />
           </div>
 
-          {/* LOGO 3: RESMI K3 KEMNAKER (UKURAN STANDAR 40px) */}
           <div className="footer-partner-item">
             <Image
               src="/images/logo-k3.png"
               alt="Sertifikasi Keselamatan K3 Kemnaker RI"
               width={140}
               height={60}
-              style={{ height: "40px", width: "auto", objectFit: "contain", mixBlendMode: "multiply" }}
+              style={{ height: "36px", width: "auto", objectFit: "contain", mixBlendMode: "multiply" }}
             />
           </div>
 
-          {/* LOGO 4: SANY (DISELESAIKAN AGAR OPTICALLY SAMA BESAR) */}
           <div className="footer-partner-item">
             <Image
               src="/images/Sany-Logo.wine.svg"
@@ -170,79 +117,102 @@ export default function Footer() {
               width={180}
               height={70}
               style={{
-                height: "56px",
+                height: "48px",
                 width: "auto",
                 objectFit: "contain",
-                transform: "scale(1.25)",
               }}
             />
           </div>
 
-          {/* LOGO 5: TADANO (UKURAN STANDAR 38px) */}
           <div className="footer-partner-item">
             <Image
               src="/images/tadano-1-logo-svg-vector.svg"
               alt="TADANO Cranes"
               width={140}
               height={60}
-              style={{ height: "38px", width: "auto", objectFit: "contain" }}
+              style={{ height: "34px", width: "auto", objectFit: "contain" }}
             />
           </div>
 
-          {/* LOGO 6: ZOOMLION (UKURAN STANDAR 38px) */}
           <div className="footer-partner-item" style={{ borderRight: "none" }}>
             <Image
               src="/images/zoomlion-seeklogo.png"
               alt="ZOOMLION"
               width={140}
               height={60}
-              style={{ height: "38px", width: "auto", objectFit: "contain" }}
+              style={{ height: "34px", width: "auto", objectFit: "contain" }}
             />
           </div>
         </div>
 
-        {/* FOOTER BOTTOM BAR */}
-        <div
-          style={{
-            background: "#201E1F",
-            color: "#ffffff",
-            padding: "15px 40px",
-            fontSize: "0.8rem",
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            flexWrap: "wrap",
-            gap: "1rem",
-          }}
-        >
-          <span>Cookie Preference Center</span>
-          <div style={{ display: "flex", gap: "1.5rem", fontSize: "0.75rem", color: "rgba(255, 255, 255, 0.85)" }}>
+        <div className="footer-bottom-bar">
+          <span>CV. Berkah Ryan · Cilegon, Banten</span>
+          <div className="footer-bottom-links">
             <Link href="/sitemap.xml" style={{ color: "inherit", textDecoration: "none" }}>
               Sitemap
             </Link>
             <Link href="/llms.txt" style={{ color: "inherit", textDecoration: "none" }}>
               llms.txt
             </Link>
-            <span>Cilegon, Banten</span>
           </div>
+          <a
+            className="footer-bottom-credit"
+            href="https://arxenovasocial.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            arxenovasocial
+          </a>
         </div>
 
         <style
           dangerouslySetInnerHTML={{
             __html: `
+          .footer-cta-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-bottom: 120px;
+          }
+          .footer-cta-heading {
+            font-size: clamp(2.4rem, 6vw, 4.75rem);
+            font-weight: 300;
+            line-height: 1.2;
+            letter-spacing: -2px;
+            font-family: var(--font-heading), sans-serif;
+            color: var(--text-1, #242120);
+          }
+          .footer-links-bar {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 25px;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            font-size: 0.8rem;
+            color: var(--text-2);
+          }
+          .footer-partner-strip {
+            display: flex;
+            justifyContent: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+          }
           .footer-partner-item {
             flex: 1;
             text-align: center;
-            padding: 30px;
-            border-right: 1px solid rgba(0, 0, 0, 0.1);
-            height: 100px;
+            padding: 24px 16px;
+            border-right: 1px solid rgba(0, 0, 0, 0.08);
+            border-top: 1px solid rgba(0, 0, 0, 0.08);
+            height: 90px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: bold;
             position: relative;
             overflow: hidden;
-            cursor: pointer;
           }
           .footer-partner-item:first-child {
             border-left: none;
@@ -250,27 +220,61 @@ export default function Footer() {
           .footer-partner-item:last-child {
             border-right: none;
           }
-          .footer-partner-item::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -150%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg,
-                rgba(255, 255, 255, 0) 0%,
-                rgba(155, 137, 113, 0.35) 50%,
-                rgba(255, 255, 255, 0) 100%);
-            transform: skewX(-20deg);
-            pointer-events: none;
+          .footer-bottom-bar {
+            background: #201E1F;
+            color: #ffffff;
+            padding: 15px 2rem;
+            font-size: 0.8rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
           }
-          .footer-partner-item:hover::after {
-            left: 150%;
-            transition: left 1.6s cubic-bezier(0.25, 1, 0.5, 1);
+          .footer-bottom-links {
+            display: flex;
+            gap: 1.5rem;
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.85);
+            margin-left: auto;
+          }
+          .footer-bottom-credit {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.55);
+            text-decoration: none;
+            letter-spacing: 0.02em;
+            transition: color 0.3s ease;
+          }
+          .footer-bottom-credit:hover {
+            color: rgba(255, 255, 255, 0.95);
           }
           @media (max-width: 768px) {
+            .sticky-reveal-footer {
+              padding-top: 60px !important;
+            }
+            .footer-cta-box {
+              margin-bottom: 50px !important;
+            }
+            .footer-cta-heading {
+              font-size: clamp(1.85rem, 7.5vw, 3rem) !important;
+              letter-spacing: -1px !important;
+            }
+            .footer-links-bar {
+              flex-direction: column !important;
+              align-items: flex-start !important;
+              gap: 12px !important;
+              padding: 16px 0 !important;
+            }
             .footer-partner-item {
-              flex: 1 1 50%;
+              flex: 1 1 50% !important;
+              height: 75px !important;
+              padding: 12px !important;
+            }
+            .footer-bottom-bar {
+              padding: 15px 1.25rem !important;
+              flex-direction: column !important;
+              align-items: flex-start !important;
+              gap: 0.5rem !important;
             }
           }
         `,
