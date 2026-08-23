@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import JsonLd from "./components/JsonLd";
+import GlobalScrollReveal from "./components/GlobalScrollReveal";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -250,7 +251,8 @@ export default function RootLayout({
       <body className={poppins.className}>
         <div className="noise" aria-hidden="true" />
         <Navbar />
-        <main>{children}</main>
+        <main data-page-content>{children}</main>
+        <GlobalScrollReveal />
         <Footer />
       </body>
     </html>

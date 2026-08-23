@@ -198,7 +198,7 @@ export default function WillemHero() {
             stagger: 0.1,
             ease: "power2.out",
           },
-          "< 1.0"
+          ">+0.15"
         );
       }
     }, container);
@@ -213,6 +213,7 @@ export default function WillemHero() {
   return (
     <section
       ref={containerRef}
+      data-scroll-reveal="off"
       style={{
         position: "relative",
         width: "100vw",
@@ -325,16 +326,17 @@ export default function WillemHero() {
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     className="willem__cover-image"
-                    src="/berkah-ryan-rental-alat-berat-cilegon.webp"
-                    alt="CV Berkah Ryan Crane Cilegon"
+                    src="/hero-rental-crane-cilegon-berkah-ryan.webp"
+                    alt="Jasa sewa crane Cilegon oleh CV Berkah Ryan"
                     style={{
                       position: "absolute",
                       inset: 0,
                       width: "100%",
                       height: "100%",
                       objectFit: "cover",
+                      objectPosition: "center 80%",
                       zIndex: 1,
-                      filter: activeData ? "blur(16px) brightness(0.4) scale(1.05)" : "none",
+                      filter: activeData ? "blur(16px) brightness(0.62) scale(1.05)" : "none",
                       transition: "filter 0.45s ease, transform 0.45s ease",
                     }}
                   />
@@ -343,7 +345,7 @@ export default function WillemHero() {
                     style={{
                       position: "absolute",
                       inset: 0,
-                      background: activeData ? "rgba(8, 8, 10, 0.82)" : "rgba(8, 8, 10, 0.65)",
+                      background: activeData ? "rgba(8, 8, 10, 0.58)" : "rgba(8, 8, 10, 0.38)",
                       transition: "background 0.4s ease",
                       zIndex: 2,
                       pointerEvents: "none",
@@ -354,7 +356,7 @@ export default function WillemHero() {
                       position: "absolute",
                       inset: 0,
                       background:
-                        "linear-gradient(180deg, rgba(8, 8, 10, 0.88) 0%, rgba(8, 8, 10, 0.55) 45%, rgba(8, 8, 10, 0.96) 100%)",
+                        "linear-gradient(180deg, rgba(8, 8, 10, 0.62) 0%, rgba(8, 8, 10, 0.28) 45%, rgba(8, 8, 10, 0.72) 100%)",
                       zIndex: 3,
                       pointerEvents: "none",
                     }}
@@ -630,6 +632,16 @@ export default function WillemHero() {
           padding: 2.25rem 3.5rem;
           box-sizing: border-box;
           pointer-events: none;
+        }
+
+        /* Keep hero copy hidden before GSAP initializes to prevent a first-paint flash. */
+        .loud-header,
+        .loud-center,
+        .loud-pillars,
+        .loud-cta-wrap,
+        .loud-orbit-dot {
+          opacity: 0;
+          transform: translateY(25px);
         }
 
         .loud-header {

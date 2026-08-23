@@ -405,7 +405,11 @@ export default function HomePage() {
             }}
             className="fleet-grid"
           >
-            <div style={{ position: "static" }} className="fleet-label">
+            <div
+              style={{ position: "static" }}
+              className="fleet-label"
+              data-scroll-reveal-item
+            >
               <h2
                 style={{
                   fontSize: "clamp(2rem, 3.2vw, 2.6rem)",
@@ -430,6 +434,7 @@ export default function HomePage() {
                 <div
                   key={item.id}
                   className="fleet-item-card"
+                  data-scroll-reveal-item
                   style={{
                     background: "var(--bg-surface)",
                     padding: "2rem 2.5rem",
