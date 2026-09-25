@@ -4,14 +4,16 @@ import Link from "next/link";
 import { portfolioData } from "../data/siteData";
 import JsonLd from "../components/JsonLd";
 
-export const metadata: Metadata = {
-  title: "Portofolio Proyek & Klien Industri | CV. Berkah Ryan Cilegon",
+import { withPageMetadata } from "../data/seo";
+
+export const metadata: Metadata = withPageMetadata({
+  title: "Portofolio Proyek & Klien Industri di Cilegon",
   description:
     "Rekam jejak proyek pengangkatan crane dan rental alat berat CV. Berkah Ryan untuk PT Pertamina, PT Chandra Asri Petrochemical, PLN Indonesia Power, Lotte Chemical, dan Indorama.",
   alternates: {
     canonical: "https://berkahryan.com/proyek",
   },
-};
+});
 
 export default function ProyekPage() {
   const projectListJsonLd = {

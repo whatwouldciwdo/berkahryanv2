@@ -4,6 +4,8 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { blogPostsData } from "../../data/siteData";
 import JsonLd from "../../components/JsonLd";
+import { withPageMetadata } from "../../data/seo";
+
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -25,8 +27,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
-  return {
-    title: `${post.title} | Wawasan CV. Berkah Ryan`,
+  return withPageMetadata({
+    title: post.title,
     description: post.excerpt,
     alternates: {
       canonical: `https://berkahryan.com/blog/${post.slug}`,
@@ -35,9 +37,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: post.title,
       description: post.excerpt,
       type: "article",
+      publishedTime: post.datePublished,
       url: `https://berkahryan.com/blog/${post.slug}`,
     },
-  };
+  });
 }
 
 export default async function BlogPostDetailPage({ params }: Props) {
@@ -53,8 +56,8 @@ export default async function BlogPostDetailPage({ params }: Props) {
     "@type": "BlogPosting",
     headline: post.title,
     description: post.excerpt,
-    datePublished: "2026-08-01",
-    dateModified: "2026-08-18",
+    datePublished: post.datePublished,
+    inLanguage: "id-ID",
     author: {
       "@type": "Organization",
       name: "CV. Berkah Ryan",
@@ -105,7 +108,7 @@ export default async function BlogPostDetailPage({ params }: Props) {
             <span className="font-mono-spec" style={{ fontSize: "0.8rem", color: "var(--text-muted)" }}>
               {post.readTime}
             </span>
-            <span style={{ fontSize: "0.8rem", color: "var(--text-muted)" }}>• {post.date}</span>
+            <time dateTime={post.datePublished} style={{ fontSize: "0.8rem", color: "var(--text-muted)" }}>• {post.date}</time>
           </div>
 
           <h1

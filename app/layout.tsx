@@ -76,8 +76,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: "/berkah-ryan-rental-alat-berat-cilegon.webp",
-        width: 1200,
-        height: 630,
+        width: 1600,
+        height: 900,
         alt: "Sewa Crane Cilegon Banten - CV Berkah Ryan",
       },
     ],
@@ -121,7 +121,7 @@ export default function RootLayout({
 }>) {
   const globalOrgJsonLd = {
     "@context": "https://schema.org",
-    "@type": "EquipmentRentalAgency",
+    "@type": "LocalBusiness",
     "@id": "https://berkahryan.com/#organization",
     name: "CV. Berkah Ryan",
     alternateName: ["Berkah Ryan Crane", "Berkah Ryan Heavy Equipment"],
@@ -152,27 +152,24 @@ export default function RootLayout({
       postalCode: "42415",
       addressCountry: "ID",
     },
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: -6.0175,
-      longitude: 106.0538,
-    },
-    openingHoursSpecification: [
-      {
+    openingHoursSpecification: [{
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      opens: "08:00",
+      closes: "17:00",
+    }],
+    contactPoint: [{
+      "@type": "ContactPoint",
+      telephone: "+6281808999462",
+      contactType: "Dispatch dan dukungan proyek",
+      availableLanguage: "Indonesian",
+      hoursAvailable: {
         "@type": "OpeningHoursSpecification",
-        dayOfWeek: [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-          "Saturday",
-          "Sunday",
-        ],
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
         opens: "00:00",
         closes: "23:59",
       },
-    ],
+    }],
     areaServed: [
       { "@type": "City", name: "Cilegon" },
       { "@type": "City", name: "Serang" },

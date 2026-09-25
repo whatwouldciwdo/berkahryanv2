@@ -5,7 +5,9 @@ import JsonLd from "../components/JsonLd";
 import { craneFleetData } from "../data/siteData";
 import styles from "./page.module.css";
 
-export const metadata: Metadata = {
+import { withPageMetadata } from "../data/seo";
+
+export const metadata: Metadata = withPageMetadata({
   title:
     "Armada Sewa Crane 3-600 Ton Cilegon, Serang, Anyer & Pandeglang",
   description:
@@ -26,7 +28,7 @@ export const metadata: Metadata = {
       "Spesifikasi lengkap armada crane dan alat berat CV. Berkah Ryan yang siap melayani proyek industri di Banten, Jawa, dan Sumatera.",
     url: "https://berkahryan.com/armada",
   },
-};
+});
 
 
 const selectionNotes = [
@@ -100,7 +102,7 @@ export default function ArmadaPage() {
   };
 
   return (
-    <main className={styles.page}>
+    <div className={styles.page}>
       <JsonLd data={armadaJsonLd} />
       <header className={styles.hero}>
         <div className={styles.container}>
@@ -234,6 +236,6 @@ export default function ArmadaPage() {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

@@ -4,6 +4,8 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { portfolioData } from "../../data/siteData";
 import JsonLd from "../../components/JsonLd";
+import { withPageMetadata } from "../../data/seo";
+
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -25,13 +27,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
-  return {
-    title: `${item.client} - ${item.title} | CV. Berkah Ryan`,
+  return withPageMetadata({
+    title: `${item.client} - ${item.title}`,
     description: `Studi kasus pengerjaan rental crane & alat berat CV. Berkah Ryan untuk ${item.client} di ${item.location}. ${item.highlight}`,
     alternates: {
       canonical: `https://berkahryan.com/proyek/${item.slug}`,
     },
-  };
+  });
 }
 
 export default async function ProjectDetailPage({ params }: Props) {

@@ -50,13 +50,9 @@ export default function GlobalScrollReveal() {
     }
 
     const context = gsap.context(() => {
-      gsap.fromTo(
-        pageRoot,
-        { autoAlpha: 0 },
-        { autoAlpha: 1, duration: 0.55, ease: "power2.out", clearProps: "all" },
-      );
-
+      // Keep the hero/intro untouched and avoid hiding already visible content.
       sections.forEach((section) => {
+        if (section.getBoundingClientRect().top < window.innerHeight) return;
         const explicitContent = Array.from(
           section.querySelectorAll<HTMLElement>("[data-scroll-reveal-item]"),
         );

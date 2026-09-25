@@ -8,7 +8,9 @@ import FleetUnitImage from "./components/FleetUnitImage";
 import OnScrollPathExperience from "./components/OnScrollPathExperience";
 import CoverageMarquee from "./components/CoverageMarquee";
 
-export const metadata: Metadata = {
+import { withPageMetadata } from "./data/seo";
+
+export const metadata: Metadata = withPageMetadata({
   title:
     "Jasa Sewa Crane Cilegon, Serang, Anyer & Pandeglang | CV. Berkah Ryan",
   description:
@@ -21,43 +23,9 @@ export const metadata: Metadata = {
       "Sewa crane 3 s/d 600 Ton untuk proyek industri di Banten, Jawa, dan Sumatera. Bersertifikat K3 Kemnaker RI, operator SIO aktif, siap 24/7.",
     url: "https://berkahryan.com",
   },
-};
+});
 
 export default function HomePage() {
-  const localBizJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "@id": "https://berkahryan.com/#localbusiness",
-    name: "CV. Berkah Ryan",
-    description:
-      "Jasa sewa crane dan rental alat berat di Cilegon, Serang, Anyer, Pandeglang, dan seluruh Banten. Melayani proyek di Pulau Jawa dan Sumatera.",
-    telephone: "+6281808999462",
-    email: "enquiries@berkahryan.com",
-    url: "https://berkahryan.com",
-    image: "https://berkahryan.com/berkah-ryan-rental-alat-berat-cilegon.webp",
-    priceRange: "$$",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "Jalan Lada BBS II Blok A-1/14",
-      addressLocality: "Cilegon",
-      addressRegion: "Banten",
-      postalCode: "42415",
-      addressCountry: "ID",
-    },
-    areaServed: [
-      "Cilegon",
-      "Serang",
-      "Anyer",
-      "Pandeglang",
-      "Merak",
-      "Bojonegara",
-      "Ciwandan",
-      "Banten",
-      "Jawa",
-      "Sumatera",
-    ],
-  };
-
   const homeFaqJsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -201,7 +169,6 @@ export default function HomePage() {
 
   return (
     <div>
-      <JsonLd data={localBizJsonLd} />
       <JsonLd data={homeServiceJsonLd} />
       <JsonLd data={homeFaqJsonLd} />
 

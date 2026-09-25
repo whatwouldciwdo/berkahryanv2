@@ -5,14 +5,16 @@ import JsonLd from "../components/JsonLd";
 import QuotationForm from "../components/QuotationForm";
 import styles from "./page.module.css";
 
-export const metadata: Metadata = {
-  title: "Hubungi Kami & Permintaan Penawaran Sewa Crane Cilegon | CV. Berkah Ryan",
+import { withPageMetadata } from "../data/seo";
+
+export const metadata: Metadata = withPageMetadata({
+  title: "Hubungi Kami & Permintaan Penawaran Sewa Crane Cilegon",
   description:
     "Hubungi CV. Berkah Ryan untuk sewa crane 3-600 Ton, forklift, dan alat berat di Cilegon Banten. Layanan dispatch operasional 24/7, respon cepat via WhatsApp 0818 0899 9462.",
   alternates: {
     canonical: "https://berkahryan.com/kontak",
   },
-};
+});
 
 const channels = [
   {
@@ -65,25 +67,12 @@ export default function KontakPage() {
     "@type": "ContactPage",
     name: "Hubungi CV. Berkah Ryan",
     description:
-      "Informasi kontak kantor, jam operasional 24/7, dan formulir permintaan sewa crane.",
-    mainEntity: {
-      "@type": "EquipmentRentalAgency",
-      name: "CV. Berkah Ryan",
-      telephone: "+6281808999462",
-      email: "enquiries@berkahryan.com",
-      address: {
-        "@type": "PostalAddress",
-        streetAddress: "Jalan Lada BBS II Blok A-1/14, Rt 009, Rw 006, Desa Ciwaduk",
-        addressLocality: "Cilegon",
-        addressRegion: "Banten",
-        postalCode: "42415",
-        addressCountry: "ID",
-      },
-    },
+      "Informasi kontak, jam kantor, dukungan dispatch 24/7, dan formulir permintaan sewa crane.",
+    mainEntity: { "@id": "https://berkahryan.com/#organization" },
   };
 
   return (
-    <main className={styles.page}>
+    <div className={styles.page}>
       <JsonLd data={contactJsonLd} />
 
       <header className={styles.hero}>
@@ -198,7 +187,7 @@ export default function KontakPage() {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }
 

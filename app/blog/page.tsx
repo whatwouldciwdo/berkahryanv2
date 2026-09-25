@@ -4,14 +4,16 @@ import Link from "next/link";
 import { blogPostsData } from "../data/siteData";
 import JsonLd from "../components/JsonLd";
 
-export const metadata: Metadata = {
-  title: "Wawasan K3, Regulasi & Panduan Derek Alat Berat | CV. Berkah Ryan",
+import { withPageMetadata } from "../data/seo";
+
+export const metadata: Metadata = withPageMetadata({
+  title: "Wawasan K3, Regulasi & Panduan Derek Alat Berat",
   description:
     "Kumpulan artikel edukatif mengenai pemilihan kapasitas crane, kepatuhan K3 Kemnaker, sertifikasi SIA & SIO, load chart, dan tips pengangkatan beban berat di Indonesia.",
   alternates: {
     canonical: "https://berkahryan.com/blog",
   },
-};
+});
 
 export default function BlogListingPage() {
   const blogListJsonLd = {
@@ -24,7 +26,7 @@ export default function BlogListingPage() {
       headline: post.title,
       description: post.excerpt,
       url: `https://berkahryan.com/blog/${post.slug}`,
-      datePublished: "2026-08-01",
+      datePublished: post.datePublished,
     })),
   };
 

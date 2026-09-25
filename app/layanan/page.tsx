@@ -4,7 +4,9 @@ import Link from "next/link";
 import JsonLd from "../components/JsonLd";
 import styles from "./page.module.css";
 
-export const metadata: Metadata = {
+import { withPageMetadata } from "../data/seo";
+
+export const metadata: Metadata = withPageMetadata({
   title:
     "Jasa Sewa Crane & Layanan Lifting Cilegon, Serang, Anyer, Pandeglang",
   description:
@@ -26,7 +28,7 @@ export const metadata: Metadata = {
       "Konsultasi lifting, site survey, lift plan, unit crane bersertifikat SIA, dan operator SIO aktif untuk proyek industri di Banten.",
     url: "https://berkahryan.com/layanan",
   },
-};
+});
 
 
 const serviceScopes = [
@@ -105,7 +107,7 @@ export default function LayananPage() {
   };
 
   return (
-    <main className={styles.page}>
+    <div className={styles.page}>
       <JsonLd data={serviceJsonLd} />
 
       <header className={styles.hero}>
@@ -193,6 +195,6 @@ export default function LayananPage() {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

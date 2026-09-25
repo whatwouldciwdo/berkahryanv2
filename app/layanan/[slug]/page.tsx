@@ -5,6 +5,8 @@ import { notFound } from "next/navigation";
 import JsonLd from "../../components/JsonLd";
 import { craneFleetData } from "../../data/siteData";
 import styles from "./page.module.css";
+import { withPageMetadata } from "../../data/seo";
+
 
 interface Props { params: Promise<{ slug: string }>; }
 
@@ -47,8 +49,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const item = craneFleetData.find((entry) => entry.slug === slug);
   if (!item) return { title: "Layanan Tidak Ditemukan" };
 
-  return {
-    title: `Sewa ${item.name} (${item.capacityRange}) Cilegon Banten | CV. Berkah Ryan`,
+  return withPageMetadata({
+    title: `Sewa ${item.name} (${item.capacityRange}) Cilegon Banten`,
     description: `Rental ${item.name} kapasitas ${item.capacityRange} di Cilegon & Banten. Bersertifikasi SIA Kemnaker RI, operator berlisensi SIO aktif, siap support proyek 24/7.`,
     alternates: { canonical: `https://berkahryan.com/layanan/${item.slug}` },
     openGraph: {
@@ -56,7 +58,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: item.shortDesc,
       url: `https://berkahryan.com/layanan/${item.slug}`,
     },
-  };
+  });
 }
 
 export default async function ServiceDetailPage({ params }: Props) {
@@ -69,11 +71,7 @@ export default async function ServiceDetailPage({ params }: Props) {
   const serviceJsonLd = {
     "@context": "https://schema.org", "@type": "Service",
     name: `Sewa ${item.name} Cilegon Banten`, description: item.description,
-    provider: {
-      "@type": "EquipmentRentalAgency", name: "CV. Berkah Ryan",
-      url: "https://berkahryan.com", telephone: "+6281808999462",
-      address: { "@type": "PostalAddress", addressLocality: "Cilegon", addressRegion: "Banten", postalCode: "42415", addressCountry: "ID" },
-    },
+    provider: { "@id": "https://berkahryan.com/#organization" },
     areaServed: [
       { "@type": "City", name: "Cilegon" }, { "@type": "City", name: "Serang" },
       { "@type": "AdministrativeArea", name: "Banten" },
@@ -89,7 +87,7 @@ export default async function ServiceDetailPage({ params }: Props) {
   };
 
   return (
-    <main className={styles.page}>
+    <div className={styles.page}>
       <JsonLd data={[serviceJsonLd, faqJsonLd]} />
 
       <section className={styles.intro} aria-labelledby="service-title">
@@ -215,6 +213,6 @@ export default async function ServiceDetailPage({ params }: Props) {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

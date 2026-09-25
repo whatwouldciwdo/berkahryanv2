@@ -345,6 +345,7 @@ export interface BlogPost {
   category: string;
   readTime: string;
   date: string;
+  datePublished: string;
   contentHtml: string;
 }
 
@@ -356,6 +357,7 @@ export const blogPostsData: BlogPost[] = [
     category: "Panduan Teknis",
     readTime: "6 min baca",
     date: "12 Agustus 2026",
+    datePublished: "2026-08-12",
     contentHtml: `
       <p>Memilih kapasitas derek (crane) yang tepat bukan sekadar mencocokkan berat beban dengan kapasitas nominal crane di brosur. Kesalahan perhitungan dalam lift engineering dapat berakibat fatal pada keselamatan kerja dan pembengkakan anggaran proyek.</p>
       <h3>1. Memahami Load Chart (Tabel Beban)</h3>
@@ -373,6 +375,7 @@ export const blogPostsData: BlogPost[] = [
     category: "K3 & Regulasi",
     readTime: "5 min baca",
     date: "28 Juli 2026",
+    datePublished: "2026-07-28",
     contentHtml: `
       <p>Di sektor industri dan konstruksi berat di Indonesia, kepatuhan K3 (Keselamatan dan Kesehatan Kerja) adalah harga mati. Setiap alat angkat dan angkut yang beroperasi wajib memenuhi kualifikasi legalitas yang ketat.</p>
       <h3>Apa itu Surat Izin Alat (SIA / Riksa Uji)?</h3>
@@ -393,6 +396,7 @@ export const blogPostsData: BlogPost[] = [
     category: "Komparasi Alat",
     readTime: "7 min baca",
     date: "15 Juni 2026",
+    datePublished: "2026-06-15",
     contentHtml: `
       <p>Dua jenis crane yang paling sering digunakan dalam proyek konstruksi besar adalah Telescopic Mobile Crane dan Crawler Crane. Masing-masing memiliki keunggulan karakteristik yang dirancang untuk medan dan beban kerja tertentu.</p>
       <h3>Kelebihan Telescopic Mobile Crane</h3>
@@ -408,6 +412,7 @@ export const blogPostsData: BlogPost[] = [
     category: "Logistik & Lahan",
     readTime: "4 min baca",
     date: "2 Mei 2026",
+    datePublished: "2026-05-02",
     contentHtml: `
       <p>Salah satu penyebab utama kecelakaan kerja pada pengoperasian crane adalah amblasnya salah satu titik tumpu outrigger akibat daya dukung tanah yang tidak memadai. Di sinilah peran krusial Steel Road Plate berketebalan 25mm.</p>
       <h3>1. Menghilangkan Risiko Amblas pada Tanah Lunak</h3>

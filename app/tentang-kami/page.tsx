@@ -4,7 +4,9 @@ import styles from "./page.module.css";
 import QuotationForm from "../components/QuotationForm";
 import CoverageMarquee from "../components/CoverageMarquee";
 
-export const metadata: Metadata = {
+import { withPageMetadata } from "../data/seo";
+
+export const metadata: Metadata = withPageMetadata({
   title: "Tentang Kami | Spesialis Jasa Sewa Crane Cilegon & Banten",
   description:
     "Kenali CV. Berkah Ryan, spesialis jasa sewa crane dan rental alat berat dari Cilegon dengan pengalaman lebih dari 10 tahun. Melayani Cilegon, Serang, Anyer, Pandeglang, Banten, Jawa, dan Sumatera dengan operator ber-SIO dan unit bersertifikat K3.",
@@ -21,7 +23,7 @@ export const metadata: Metadata = {
       "Lebih dari 10 tahun melayani jasa sewa crane untuk industri di Cilegon, Serang, Anyer, Pandeglang, dan seluruh Banten.",
     url: "https://berkahryan.com/tentang-kami",
   },
-};
+});
 
 const facts = [
   { value: "10+", label: "Tahun pengalaman" },

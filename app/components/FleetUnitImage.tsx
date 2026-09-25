@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 
 interface FleetUnitImageProps {
@@ -10,19 +10,43 @@ interface FleetUnitImageProps {
 
 export default function FleetUnitImage({ images, alt }: FleetUnitImageProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!images || images.length <= 1) return;
+    const container = containerRef.current;
+    if (!container || images.length <= 1) return;
 
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % images.length);
-    }, 3200);
+    const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let visible = false;
+    let interval: ReturnType<typeof setInterval> | undefined;
+    const sync = () => {
+      clearInterval(interval);
+      interval = undefined;
+      if (visible && !document.hidden && !motion.matches) {
+        interval = setInterval(() => {
+          setCurrentIndex((prev) => (prev + 1) % images.length);
+        }, 3200);
+      }
+    };
+    const observer = new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting;
+      sync();
+    });
+    observer.observe(container);
+    document.addEventListener("visibilitychange", sync);
+    motion.addEventListener("change", sync);
 
-    return () => clearInterval(interval);
-  }, [images]);
+    return () => {
+      clearInterval(interval);
+      observer.disconnect();
+      document.removeEventListener("visibilitychange", sync);
+      motion.removeEventListener("change", sync);
+    };
+  }, [images.length]);
 
   return (
     <div
+      ref={containerRef}
       style={{
         position: "relative",
         width: "290px",
